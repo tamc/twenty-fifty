@@ -1,3 +1,9 @@
+DECC 2050 CALCULATOR TOOL
+A web interface to the www.decc.gov.uk 2050 energy and climate change calculator
+
+Further detail on the project:
+http://www.decc.gov.uk/en/content/cms/what_we_do/lc_uk/2050/2050.aspx
+
 DEPENDENCIES
 ruby 1.9.1 (including development headers)
 sqlite3 (including development headers)
