@@ -1,0 +1,19 @@
+DEPENDENCIES
+ruby 1.9.1 (including development headers)
+sqlite3 (including development headers)
+
+INSTALATION
+On ubuntu 10.04:
+sh ./bootstrap_on_ubuntu.sh
+...should install the required dependencies and start the server.
+
+Otherwise:
+1. Install the dependencies
+2. sh setup.sh
+3. sh run.sh
+4. Navigate to http://127.0.0.1:3000 in your web browser
+
+If that doesn't work, the most common reason is that your ruby 1.9.1 has been installed with a different name (ruby1.9.1; ruby191). Edit the command names at the top of the setup.sh and run.sh files to reflect that fact and try again.
+
+HACKING
+You are welcome to improve this code. Please read the LICENCE file and then the HACKING file contains some hints and tips on changing the code and a process for sending in patches and bug reports.

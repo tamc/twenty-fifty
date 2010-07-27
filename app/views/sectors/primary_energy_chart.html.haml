@@ -1,0 +1,26 @@
+%script{ :type => 'text/javascript' }
+  $(document).ready(function() {
+  = scroll_to_last_position
+  = redirect_to_disclaimer
+  = draw_demand_range_chart
+  = draw_primary_range_chart
+  = draw_emissions_range_chart
+  })
+
+#demand
+  .chart#demand_chart
+  = render 'pathways/demand_choices'
+  
+#supply
+  .chart#supply_chart
+  .switch= link_to "Switch to chart showing just conventional fossil fuel electricity", pathway_sector_url(@code,@choice)
+
+  = render 'pathways/supply_choices'
+
+#ghg
+  .chart#emissions_chart
+  = render 'pathways/ghg_choices'
+  
+  #keydata= render 'keydata'
+
+.clear

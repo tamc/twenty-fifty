@@ -1,0 +1,6 @@
+%table.choice_bars.big#demand_big
+  = big_choice_bars "Demand measures:", @pathway.demand_choice_range, @pathway.demand_choice_mode.to_i
+    
+%table.choice_bars.detail#demand_detail
+  - @pathway.demand_choice_range.each do |index|
+    = choice_bars index

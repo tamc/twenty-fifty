@@ -1,0 +1,69 @@
+%h1 How to use this tool
+
+%p.link_back= link_to 'Return to the calculator', primary_energy_chart_pathway_url(1)
+
+= render 'short_help'
+
+%h2 Frequently Asked Questions
+
+%h3.question Q: Why does it look odd?
+
+.answer
+  This tool is designed to work in the latest web browsers. It may look odd in older browsers, but it should work. If you want to help us by providing a fix to work with your browser, then please
+  = link_to 'download the source code', get_source_code_document_url
+  and submit a patch.
+
+%h3.question Q: Why can't I see any charts? Why does nothing happen when I click on an option?
+
+.answer
+  This tool requires javascript to produce the charts and to navigate between options. If you want to help us by providing a fixes to work without javascript, then please
+  = link_to 'download the source code', get_source_code_document_url
+  and submit a patch.
+
+%h3.question Q: Why have all the charts gone red?
+
+.answer
+  You have probably enabled a feature which allows the effect of selecting different levels for a given choice to be visualised. Read the text that appears on the bottom right of the screen for guidance on what to do next.
+
+%h3.question Q: Why do the charts overlap?
+
+.answer
+  You have probably shrunk your browser window. The charts do not automatically shrink when this happens, so they may end up overlapping. Reloading the page should trigger the charts to be drawn in a smaller size.
+
+%h3.question Q: Why is there a small arrow on the right of the screen?
+
+.answer
+  This arrow roughly indicates an 80% reduction in greenhouse gas emissions from 1990 levels. 
+
+%h3.question Q: What is geosequestration? What is CCS?
+
+.answer
+  Both geo-sequestration and CCS (which is the acronym for Carbon Capture and Stroage) capture carbon dioxide, and then store it. Geo-sequestration is the name for techniques that extract carbon dioxide directly from the atmosphere. CCS is the name for techniques that capture carbon dioxide from fuel burning, before it reaches the atmosphere.
+
+%h3.question Q: What are TWh?
+
+.answer
+  TWh are terawatt-hours, which are a unit of energy. One terawatt-hours is a billion times bigger than one kilowatt-hour (kWh), which is the unit you will see on your electricity and gas bills. If everyone in Britain (60 million people) were to use an extra 1 kWh per day, the national consumption would go up by 22 TWh per year.
+
+%h3.question Q: What are the limitations of this approach?
+.answer= render 'warnings'
+
+%h3.question Q: How can I help improve this tool?
+.answer= render 'how_to_help'
+
+%h3.question Q: I have another question. How do I get it answered?
+
+.answer
+  %p
+    If you have a comment or criticism of some aspect of this work, then please read and respond to the 
+    = link_to 'full 2050 Pathways Analysis call for evidence report.', call_for_evidence_document_url 
+  %p
+    If you have a question about how some aspect of this tool works, then please consult the
+    = link_to 'full 2050 Pathways Analysis call for evidence report', call_for_evidence_document_url 
+    and if that doesn't answer it, please email
+    = mail_to '2050pathways@decc.gsi.gov.uk.'
+    
+  
+
+
+%p.link_back= link_to 'Return to the calculator', primary_energy_chart_pathway_url(1)

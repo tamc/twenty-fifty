@@ -1,0 +1,251 @@
+body {
+  font-family: Arial, sans-serif;
+  font-size: 100%;
+  font-style: normal;
+  color: #222222;
+  margin: 0;
+  padding: 0; }
+
+body.document {
+  margin: 5%; }
+
+#container {
+  width: 100%;
+  font-size: 0.875em; }
+
+#demand, #supply, #ghg {
+  position: absolute;
+  width: 30%; }
+  #demand table, #supply table, #ghg table {
+    width: 92%;
+    margin-right: 4%;
+    margin-left: 4%; }
+
+#demand {
+  left: 1%; }
+
+#supply {
+  left: 35%; }
+
+#ghg {
+  left: 70%; }
+
+.chart {
+  width: 100%;
+  height: 380px; }
+  .chart .loading {
+    text-align: center;
+    padding-top: 170px; }
+  .chart #pathwayPollingCounter {
+    text-align: center; }
+
+.warning {
+  background-color: red;
+  border: solid 3px black;
+  color: white; }
+
+#disclaimer {
+  position: relative;
+  width: 100%;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  text-align: center;
+  background-color: #0066a1;
+  text-weight: bold;
+  color: white; }
+  #disclaimer a {
+    color: white;
+    text-decoration: none; }
+  #disclaimer a:hover {
+    text-decoration: underline; }
+  #disclaimer #help, #disclaimer #share {
+    display: inline;
+    padding-right: 3px;
+    padding-left: 3px; }
+  #disclaimer #help {
+    position: absolute;
+    left: 3px; }
+  #disclaimer #share {
+    position: absolute;
+    right: 3px; }
+
+.switch {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 30px;
+  z-index: 2000;
+  font-size: 0.72em; }
+  .switch a {
+    text-decoration: none; }
+  .switch a:hover {
+    text-decoration: underline; }
+
+.switch {
+  width: 100%; }
+
+.noswitch {
+  width: 5em; }
+
+table#demand_detail {
+  margin-top: 10px; }
+
+table#supply_detail {
+  margin-top: 10px; }
+
+#keydata {
+  margin-top: 50px; }
+  #keydata h3 {
+    text-align: center;
+    font-size: 0.72em; }
+  #keydata p {
+    font-size: 0.72em;
+    width: 92%;
+    margin-right: 4%;
+    margin-left: 4%; }
+  #keydata table.key_facts {
+    font-size: 0.72em;
+    width: 92%; }
+    #keydata table.key_facts td.description {
+      text-align: left;
+      width: 40%; }
+    #keydata table.key_facts td.value {
+      text-align: right;
+      width: 10%; }
+    #keydata table.key_facts td.target {
+      text-align: left;
+      width: 50%; }
+
+table.choice_bars {
+  width: 100%; }
+  table.choice_bars td.description {
+    font-size: 0.72em;
+    border: solid 1px white;
+    border-bottom: dotted 1px #cccccc; }
+    table.choice_bars td.description a {
+      text-decoration: none;
+      color: black; }
+    table.choice_bars td.description a:hover {
+      text-decoration: underline; }
+  table.choice_bars td.choicebar {
+    width: 20px;
+    margin: 0;
+    padding: 0;
+    border: solid 1px;
+    border-color: #cccccc;
+    font-size: 0.72em;
+    text-align: center; }
+  table.choice_bars td.expand_options {
+    font-size: 0.72em;
+    text-align: center; }
+  table.choice_bars td.choicebar.hover {
+    border-color: black;
+    cursor: pointer;
+    color: black; }
+  table.choice_bars td.control {
+    width: 10px; }
+    table.choice_bars td.control a {
+      color: black;
+      text-decoration: none; }
+  table.choice_bars td.left {
+    text-align: right; }
+  table.choice_bars td.full {
+    border-color: #aaaaaa;
+    text-color: white; }
+  table.choice_bars td.empty {
+    background-color: white;
+    color: #aaaaaa; }
+  table.choice_bars td.greyed {
+    color: #aaaaaa; }
+  table.choice_bars td.detail {
+    color: #aaaaaa; }
+
+.pathways tr.choice1 td.full {
+  background-color: lime; }
+.pathways tr.choice2 td.full {
+  background-color: yellow; }
+.pathways tr.choice3 td.full {
+  background-color: orange; }
+.pathways tr.choice4 td.full {
+  background-color: red; }
+
+.sectors tr.selected_choice td.description {
+  font-weight: bold;
+  background-color: #aa4643; }
+  .sectors tr.selected_choice td.description a {
+    color: white; }
+.sectors tr.selected_choice td.control, .sectors tr.selected_choice td.control a {
+  color: #aa4643; }
+.sectors tr.selected_choice td.choice1 {
+  background-color: lime; }
+.sectors tr.selected_choice td.choice2 {
+  background-color: yellow; }
+.sectors tr.selected_choice td.choice3 {
+  background-color: orange; }
+.sectors tr.selected_choice td.choice4 {
+  background-color: red; }
+.sectors tr.choice1 td.full, .sectors tr.choice2 td.full, .sectors tr.choice3 td.full, .sectors tr.choice4 td.full {
+  background-color: #aaaaaa; }
+
+#consequences div {
+  float: left; }
+
+.clear {
+  clear: both; }
+
+.big {
+  font-weight: bold; }
+
+.tooltip {
+  display: none;
+  background: transparent url(/images/black_arrow.png);
+  font-size: 12px;
+  height: 70px;
+  width: 160px;
+  padding: 25px;
+  color: white;
+  z-index: 10000; }
+
+.full_details_on_choice {
+  width: 300px;
+  margin: 0 50px;
+  font-size: 10px; }
+
+.overall_target {
+  width: 100%;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: bold; }
+
+.failed {
+  color: red; }
+
+.hit {
+  color: green; }
+
+.reveal {
+  width: 100%;
+  text-align: center;
+  font-size: 8px; }
+  .reveal a {
+    text-decoration: none; }
+  .reveal a:hover {
+    text-decoration: underline; }
+
+.question {
+  color: blue; }
+
+.question:hover {
+  text-decoration: underline;
+  cursor: pointer; }
+
+.media {
+  float: right;
+  border: 1px solid black;
+  margin-left: 10px;
+  margin-bottom: 10px; }
+
+.level_description {
+  margin-bottom: 0.7em; }

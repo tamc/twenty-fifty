@@ -1,0 +1,23 @@
+!!! Transitional
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
+    = other_meta_data
+    %title 2050 pathway
+    = stylesheet_link_tag :all, :cache => true
+    = javascript_include_tag :all, :cache => true
+    <!--[if lt IE 7]>
+    <style>
+    .tooltip {
+    background-image:url(/images/black_arrow.gif);
+    }
+    </style>
+    <![endif]-->
+  %body{ :class => controller.controller_name}
+    #container
+      #disclaimer
+        #help= link_to image_tag("help.gif", :border=>0, :alt => "help"), help_document_url
+        This tool uses the assumptions in the DECC 2050 Calculator-1.0.7-20July2010.
+        = link_to 'Help us to improve it.', make_it_better_document_url
+        #share= render 'layouts/add_this.html'
+      = yield

@@ -1,0 +1,28 @@
+%script{ :type => 'text/javascript' }
+  $(document).ready(function() {
+  = redirect_to_disclaimer
+  = scroll_to_last_position(false) # False means: Remember current position for reload once calcualted
+  = poll check_if_calculated_pathway_url(@code)
+  })
+
+#demand
+  .chart#demand_chart 
+  .switch &nbsp;
+  = render "demand_choices"
+
+#supply
+  .chart#supply_chart
+    .loading Calculating
+    #pathwayPollingCounter 0s
+  .switch &nbsp;
+  = render "supply_choices"
+  
+#ghg
+  
+  .chart#emissions_chart
+  .switch &nbsp;
+  = render "ghg_choices"
+  
+  #keydata
+      
+.clear

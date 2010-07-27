@@ -1,0 +1,55 @@
+# Boring file regexps:
+\.hi$
+\.o$
+\.o\.cmd$
+# *.ko files aren't boring by default because they might
+# be Korean translations rather than kernel modules.
+# \.ko$
+\.ko\.cmd$
+\.mod\.c$
+(^|/)\.tmp_versions($|/)
+(^|/)CVS($|/)
+(^|/)RCS($|/)
+~$
+#(^|/)\.[^/]
+(^|/)_darcs($|/)
+\.bak$
+\.BAK$
+\.orig$
+(^|/)vssver\.scc$
+\.swp$
+(^|/)MT($|/)
+(^|/)\{arch\}($|/)
+(^|/).arch-ids($|/)
+(^|/),
+\.class$
+\.prof$
+(^|/)\.DS_Store$
+(^|/)BitKeeper($|/)
+(^|/)ChangeSet($|/)
+(^|/)\.svn($|/)
+\.py[co]$
+\#
+\.cvsignore$
+(^|/)Thumbs\.db$
+^tmp/
+^tmp/excel_models/*
+^public/pathways/*
+^public/sectors/*
+\.sqlite3$
+\.log$
+\.log.*
+\.sql$
+db/schema\.rb
+config/lighttpd\.conf
+^public/uploads/*
+^public/pictures/*
+^public/tmp/*
+^tmp/attachment_fu/*
+^test/tmp
+^test/tmp/*
+^index/*
+^coverage($|/)
+^config/initializers/cache_expiry.rb
+^public/javascripts/all.js
+^public/stylesheets/all.css

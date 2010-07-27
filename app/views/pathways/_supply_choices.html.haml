@@ -1,0 +1,6 @@
+%table.choice_bars.big#supply_big
+  = big_choice_bars "Supply measures:", @pathway.supply_choice_range, @pathway.supply_choice_mode.to_i
+        
+%table.choice_bars.detail#supply_detail
+  - @pathway.supply_choice_range.each do |index|
+    = choice_bars index
