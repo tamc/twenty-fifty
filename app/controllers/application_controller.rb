@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def return_calculating_unless_ready
-    declare_freshness_of_view(@pathway.updated_at)
+    declare_freshness_of_view(@pathway.updated_at) if calculated?
     render :calculating unless calculated?
   end 
   

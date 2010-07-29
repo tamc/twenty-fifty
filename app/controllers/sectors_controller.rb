@@ -11,7 +11,7 @@ class SectorsController < ApplicationController
   private
   
   def return_calculating_unless_ready
-    declare_freshness_of_view(@pathways.map(&:updated_at).max)
+    declare_freshness_of_view(@pathways.map(&:updated_at).max) if calculated?
     render :calculating unless calculated?
   end
   
