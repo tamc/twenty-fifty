@@ -65,6 +65,11 @@ body.document {
   #disclaimer #help {
     position: absolute;
     left: 3px; }
+    #disclaimer #help .links {
+      position: relative;
+      bottom: 3px; }
+      #disclaimer #help .links a {
+        padding-left: 3px; }
   #disclaimer #share {
     position: absolute;
     right: 3px; }

@@ -16,8 +16,11 @@
   %body{ :class => controller.controller_name}
     #container
       #disclaimer
-        #help= link_to image_tag("help.gif", :border=>0, :alt => "help"), help_document_url
-        This tool uses the assumptions in the DECC 2050 Calculator-1.0.7-20July2010.
-        = link_to 'Help us to improve it.', make_it_better_document_url
+        #help
+          = link_to image_tag("help.gif", :border=>0, :alt => "help"), help_document_url
+          %span.links= %w{r a b c d e f}.map { |code| link_to(code,primary_energy_chart_pathway_url(code)) }.join
         #share= render 'layouts/add_this.html'
+        %span#note
+          This tool uses the assumptions in the DECC 2050 Calculator-1.0.7-20July2010.
+          = link_to 'Help us to improve it.', make_it_better_document_url
       = yield
