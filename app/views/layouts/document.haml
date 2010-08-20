@@ -6,7 +6,6 @@
     %title 2050 pathway
     = stylesheet_link_tag :all, :cache => true
     = javascript_include_tag :all, :cache => true
-    = render 'layouts/google.js'
     %script{:type => 'text/javascript'}
       $.cookie('user_has_read_disclaimer','yes',{path: '/'});
   %body{ :class => controller.controller_name}
