@@ -7,6 +7,7 @@ $rake jobs:work RAILS_ENV=production &
 $ruby script/server -e production &
 echo
 echo "2050 Server"
+echo "When you see INFO  WEBrick::HTTPServer#start: pid=51858 port=3000 below"
 echo "Open http://127.0.0.1:3000 in your browser"
 echo
 wait
