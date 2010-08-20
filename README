@@ -19,7 +19,15 @@ Otherwise:
 3. sh run.sh
 4. Navigate to http://127.0.0.1:3000 in your web browser
 
-If that doesn't work, the most common reason is that your ruby 1.9.1 has been installed with a different name (ruby1.9.1; ruby191). Edit the command names at the top of the setup.sh and run.sh files to reflect that fact and try again.
+If that doesn't work, the most common reason is that your ruby 1.9.1 has been installed with a different name (ruby1.9.1; ruby191). Edit the command names at the top of the setup.sh and run.sh files to reflect that fact and try again. You may also need to be an administrator to install the required ruby gems. On a unix system you could try running sudo rake gems:install from this directory.
+
+THINGS TO IGNORE
+
+You may see some deprecation warnings like those below. You can ignore them.
+
+DEPRECATION WARNING: Rake tasks in vendor/plugins/delayed_job/tasks are deprecated. Use lib/tasks instead. (called from at /var/lib/gems/1.9.1/gems/rails-2.3.8/lib/tasks/rails.rb:10)
+(in /var/www/2050) DEPRECATION WARNING: Rake tasks in vendor/plugins/delayed_job/tasks are deprecated. Use lib/tasks instead. (called from at /var/lib/gems/1.9.1/gems/rails-2.3.8/lib/tasks/rails.rb:10)
+
 
 HACKING
 You are welcome to improve this code. Please read the LICENCE file and then the HACKING file contains some hints and tips on changing the code and a process for sending in patches and bug reports.
