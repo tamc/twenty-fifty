@@ -36,7 +36,7 @@ $(document).ready(function() {
     return true;
   });
 
-  $("td.choicebar[title]").tooltip({delay: 0});
+  $("td.choicebar[title]").tooltip({delay: 0, position: 'top left', offset:[3,3]});
 
   $('td.choicebar').click( function() {
     $.cookie('scroll',$("body").scrollTop(),{path: '/'});

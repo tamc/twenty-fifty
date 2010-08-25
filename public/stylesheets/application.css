@@ -203,12 +203,16 @@ table.choice_bars {
 
 .tooltip {
   display: none;
-  background: transparent url(/images/black_arrow.png);
+  background-color: yellow;
+  color: black;
+  border: 2px solid black;
+  border-radius: 15px 15px 0px 15px;
+  -moz-border-radius: 15px 15px 0px 15px;
+  box-shadow: 10px 10px 15px #888888;
   font-size: 12px;
-  height: 70px;
-  width: 160px;
-  padding: 25px;
-  color: white;
+  height: 5em;
+  width: 14em;
+  padding: 15px;
   z-index: 10000; }
 
 .full_details_on_choice {
