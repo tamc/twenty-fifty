@@ -1,0 +1,454 @@
+// Unless otherwise specified, all measurements are in pixels
+
+var raw_data = <%= @pathway.sankey_data.to_json %>;
+var name_conversions = {
+  "Ngas":"Natural gas",
+  "UK land based bioenergy":"Forests & biocrops",
+  "Bio-conversion":"Biomass processing",
+  "H2 conversion":"Hydrogen production",
+  "H2":"Hydrogen",
+  "Useful district heat":"Delivered heat",
+  "Heating and cooling - homes":"Home heating & cooling",
+  "Heating and cooling - commercial":"Office heating & cooling",
+  "Lighting & appliances - homes":"Home lighting & appliances",
+  "Lighting & appliances - commercial":"Office lighting & appliances"
+};
+convert_name = function(name) { 
+  var alternative_name = name_conversions[name];
+  if(alternative_name == null) {
+    return name;
+  } else {
+    return alternative_name;
+  }
+};
+
+// The drawing area
+var display_in_element = 'sankey'; 
+var display_width = $('#sankey').width(); // px
+
+// Derived units
+var left_margin = 100;
+var right_margin = 100;
+var TWh = (display_width / 1000) * 0.1; // Pixels per TWh
+var x_step = (display_width - left_margin - right_margin) / 8;
+var y_space = 100 * TWh;
+
+var threshold_for_drawing = 0; // Don't bother drawing a line or a box if its size is less than this in pixels
+
+var box_width = 50; // px
+var flow_edge_width = 2; // px
+var flow_curve = 0.25; // Proportion of the horizontal distance to position the control point at
+
+var boxes = [];
+var lines = [];
+
+// Models
+EnergyLine = function(left_box_name,energy,right_box_name) {
+  this.energy = energy;
+  this.size = energy*TWh;
+  this.colour = 'orange';
+  this.ox = 0;
+  this.oy = 0;
+  this.dx = 0;
+  this.dy = 0;
+  this.left_box = TransformationBox.find_or_create(left_box_name);
+  this.right_box = TransformationBox.find_or_create(right_box_name);
+  this.left_box.right_lines.push(this);
+  this.right_box.left_lines.push(this);
+  this.draw = function(r) { 
+    var curve = ((this.dx-this.ox) * flow_curve);
+    this.inner_colour = Raphael.rgb2hsb(this.colour);
+    this.inner_colour.b = this.inner_colour.b + 0.5;
+    this.left_label = r.text((this.ox+1),(this.oy-(this.size/2)-5),Math.round(this.energy)).attr({'text-anchor':'start'});
+    this.right_label = r.text((this.dx-1),(this.dy-(this.size/2)-5),Math.round(this.energy)).attr({'text-anchor':'end'});
+    this.left_label.hide();
+    this.right_label.hide();
+    
+    flow_path = "M "+this.ox+","+this.oy+" Q "+(this.ox+curve)+","+this.oy+" "+((this.ox+this.dx)/2)+","+((this.oy+this.dy)/2)+" Q "+(this.dx-curve)+","+this.dy+" "+this.dx+","+this.dy;
+    this.outer_line = r.path(flow_path).attr({'stroke':this.colour,'stroke-width':this.size});
+    var inner_width = this.size > flow_edge_width ? this.size - flow_edge_width : this.size
+    this.inner_line = r.path(flow_path).attr({'stroke-width':inner_width, 'stroke':this.inner_colour});
+    var energy_line = this;
+    r.set().push(this.inner_line,this.outer_line).hover(
+      function (event) { 
+        energy_line.highlight(true,true);
+        for(line in lines) { lines[line].fade_unless_highlighted() };
+        for(box in boxes) { boxes[box].fade_unless_highlighted() };
+      }, 
+      function (event) { 
+        energy_line.un_highlight(true,true);
+        for(line in lines) { lines[line].un_fade() };
+        for(box in boxes) { boxes[box].un_fade() };        
+      }
+    );
+  };
+  this.fade_unless_highlighted = function() {
+    if(this.outer_line == null) { return false };
+    if(this.inner_line == null) { return false }; 
+    if(this.highlighed == true) { return false };
+    // this.outer_line.animate({'opacity':'0.1'},2000);
+    // this.inner_line.animate({'opacity':'0.1'},2000);
+    this.outer_line.attr({'opacity':'0.1'});
+    this.inner_line.attr({'opacity':'0.1'});
+  };
+  this.un_fade = function() {
+    if(this.outer_line == null) { return false };
+    if(this.inner_line == null) { return false }; 
+    if(this.highlighed == true) { return false };
+    // this.inner_line.animate({'opacity':'1.0'},2000);
+    // this.outer_line.animate({'opacity':'1.0'},2000);
+    this.outer_line.attr({'opacity':'1.0'});
+    this.inner_line.attr({'opacity':'1.0'});
+  };
+  this.highlight = function(left,right) {
+    if(this.outer_line == null) { return false };
+    if(this.inner_line == null) { return false }; 
+    this.highlighed = true;
+    if(left)  { 
+      this.left_label.toFront();
+      this.left_label.show();
+      this.left_box.highlight()  
+    };
+    if(right) { 
+      this.right_label.toFront();
+      this.right_label.show();
+      this.right_box.highlight() 
+    };
+    // this.outer_line.animate({'stroke':'#000'},500);
+    // this.outer_line.attr({'stroke':'#000'});
+  };
+  this.un_highlight = function(left,right) {
+    if(this.outer_line == undefined) { return false };
+    this.highlighed = false;
+    if(left)  { 
+      this.left_label.hide();
+      this.left_box.un_highlight()   
+    };
+    if(right) { 
+      this.right_label.hide();
+      this.right_box.un_highlight()  
+    };
+    // this.outer_line.animate({'stroke':this.colour},500);
+    // this.outer_line.attr({'stroke':this.colour});
+  }
+}
+
+
+TransformationBox = function(name) {
+  this.name = name;
+  this.label_text = convert_name(name);
+  this.line_colour = "orange";
+  this.left_lines = new Array;
+  this.right_lines = new Array;
+  this.x = 0;
+  this.y = 0;
+  this.ghg = null;
+  this.b = function() { return this.y + this.size(); }
+  this.is_left_box = function() { return this.left_lines.length == 0; }
+  this.is_right_box = function() { return this.right_lines.length == 0; }
+  this.size = function() {
+    var s = 0;
+    var lines = this.is_left_box() ? this.right_lines : this.left_lines;
+    for (var i = 0, ii = lines.length; i < ii; i++) {
+      if(lines[i].size > threshold_for_drawing) {
+        s = s + lines[i].size;        
+      }
+    }
+    return s;
+  }
+  this.position_and_colour_lines = function() {
+    var ly = this.y;
+    var left_lines = this.left_lines;
+    left_lines.sort(function(a,b) {return a.left_box.y - b.left_box.y} );
+    for (var i = 0, ii = left_lines.length; i < ii; i++) {
+      line = left_lines[i];
+      line.dx = this.x;
+      line.dy = ly + (line.size/2);
+      ly = ly + (line.size);
+    }
+    var ry = this.y;
+    var right_lines = this.right_lines;
+    right_lines.sort(function(a,b) {return a.right_box.y - b.right_box.y} );
+    for (var i = 0, ii = right_lines.length; i < ii; i++) {
+      line = right_lines[i];
+      line.colour = this.line_colour;
+      line.ox = this.x + box_width;
+      line.oy = ry + (line.size/2);
+      ry = ry + (line.size);
+    }
+  }
+  this.draw = function(r) {
+    this.box = r.rect(this.x,this.y,box_width,this.size()).attr({'fill':"#E8E2FF","stroke":"#D4CBF2"});
+    if(this.is_left_box()) {
+      this.label = r.text(this.x-3.0,this.y+(this.size()/2),this.label_text).attr({'text-anchor':'end'});
+    } else if(this.is_right_box()) {
+      this.label = r.text(this.x+box_width+3.0,this.y+(this.size()/2),this.label_text).attr({'text-anchor':'start'});
+    } else {
+      this.label = r.text(this.x+(box_width/2),this.y+(this.size()/2),this.label_text.replace(/[^a-zA-Z0-9]/,"\n"));
+    }
+    if(this.ghg != null) {
+      this.emissions_circle = r.circle(this.x+box_width,this.y,12).attr({'fill': (this.ghg > 0 ? '#000' : '#0a0'),'stroke-width':0})
+      this.emissions_measure = r.text(this.x+box_width,this.y,this.ghg).attr({'stroke':'#fff','text-anchor':'middle'})      
+    }
+    this.number_label = r.text(this.x+(box_width/2),this.y-5,Math.round(this.size()/TWh));
+    this.number_label.hide();
+    var transformation_box = this;
+    r.set().push(this.number_label,this.label,this.box).hover(
+      function (event) { 
+        transformation_box.highlight();
+        transformation_box.number_label.toFront();
+        transformation_box.number_label.show();
+        for (var i = 0, ii = transformation_box.left_lines.length; i < ii; i++) {
+          transformation_box.left_lines[i].highlight(true,false);
+        }
+        for (var j = 0, jj = transformation_box.right_lines.length; j < jj; j++) {
+          transformation_box.right_lines[j].highlight(false,true);
+        }
+        for(line in lines) { lines[line].fade_unless_highlighted() };
+        for(box in boxes) { boxes[box].fade_unless_highlighted() };
+      }, 
+      function (event) { 
+        transformation_box.un_highlight();
+        transformation_box.number_label.hide();
+        for (var i = 0, ii = transformation_box.left_lines.length; i < ii; i++) {
+          transformation_box.left_lines[i].un_highlight(true,false);
+        }
+        for (var j = 0, jj = transformation_box.right_lines.length; j < jj; j++) {
+          transformation_box.right_lines[j].un_highlight(false,true);
+        }
+        for(line in lines) { lines[line].un_fade() };
+        for(box in boxes) { boxes[box].un_fade() };
+      }
+    );
+  };
+  this.highlight = function() {
+    if(this.box == undefined) { return false;}
+    this.highlighed = true;    
+    // this.box.animate({'stroke':'#000'},2000);
+    // this.box.attr({'stroke':'#000'});
+  };
+  this.un_highlight = function() {
+    if(this.box == undefined) { return false;}
+    this.highlighed = false;    
+    // this.box.animate({'stroke':'#D4CBF2'},2000);
+    // this.box.attr({'stroke':'#D4CBF2'});
+  };
+  this.fade_unless_highlighted = function() {
+    if(this.box == undefined) { return false;}
+    if(this.highlighed == true) { return false };
+    // this.box.animate({'opacity':'0.1'},2000);
+    // this.label.animate({'opacity':'0.1'},2000);
+    this.box.attr({'opacity':'0.1'});
+    this.label.attr({'opacity':'0.1'});
+  };
+  this.un_fade = function() {
+    if(this.box == undefined) { return false;}
+    if(this.highlighed == true) { return false };
+    // this.box.animate({'opacity':'1.0'},2000);
+    // this.label.animate({'opacity':'1.0'},2000);
+    this.box.attr({'opacity':'1.0'});
+    this.label.attr({'opacity':'1.0'});
+  };
+  
+}
+
+TransformationBox.find_or_create = function(name) { 
+  if(boxes[name] == null) {
+    boxes[name] = new TransformationBox(name);
+  } 
+  return boxes[name];
+}
+
+for (var i = 0, ii = raw_data.length; i < ii; i++) {
+  if(raw_data[i][0] != 0 ) {
+    lines[raw_data[i][0]+"-"+raw_data[i][2]] = new EnergyLine(raw_data[i][0],raw_data[i][1],raw_data[i][2]);
+  }
+}
+
+// Layout settings
+
+stack = function(x,box_names,y) {
+  if (undefined === y) { y = 10; } // Start stack a few pixels from top so that labels are not clipped
+  for (var i = 0, ii = box_names.length; i < ii; i++) {
+    box = boxes[box_names[i]];
+    if(box == null) {
+      alert(""+i+"out of "+ii+" with name "+box_names[i]+" in "+box_names+" in "+boxes);
+    } else { 
+      box.y = y;
+      box.x = left_margin + (x * x_step);
+      y = box.b() + y_space;      
+    }
+  }
+  return y;
+}
+
+var display_height = stack(0,[
+"Pumped heat",
+"Solar",
+"Wind",
+"Tidal",
+"Wave",
+"Geothermal",
+"Hydro",
+"Electricity imports",
+"Nuclear",
+"Coal reserves",
+"Coal imports",
+"Biomass imports",
+"Oil reserves",
+"Oil imports",
+"Biofuel imports",
+"Gas reserves",
+"Gas imports",
+"UK land based bioenergy",
+"Agricultural 'waste'",
+"Other waste",
+"Marine algae"
+]);
+
+stack(1,["Coal"],boxes["Coal reserves"].y);
+stack(1,["Oil"],boxes["Oil reserves"].y);
+stack(1,["Ngas"],boxes["Gas reserves"].y);
+stack(1,["Bio-conversion"],boxes["UK land based bioenergy"].y);
+
+stack(2,["Solar Thermal", "Solar PV"],boxes["Solar"].y);
+stack(2,[
+"Solid",
+"Liquid",
+"Gas"
+],boxes["Coal"].y);
+
+stack(3,[
+"Thermal generation",
+"CHP"
+],boxes["Nuclear"].y);
+
+stack(4,["Electricity grid","District heating"],boxes["Wind"].y);
+
+stack(5,["H2 conversion"],boxes["Electricity grid"].y);
+
+stack(6,["H2"],boxes["H2 conversion"].y);
+
+stack(7,[
+"Heating and cooling - homes",
+"Heating and cooling - commercial",
+"Lighting & appliances - homes",
+"Lighting & appliances - commercial",
+"Industry",
+"Road transport",
+"Rail transport",
+"Domestic aviation",
+"International aviation",
+"National navigation",
+"International shipping",
+"Agriculture",
+"Geosequestration",
+"Over generation / exports",
+//"Exports",
+"Losses"
+]);
+
+// Nudge
+boxes["Losses"].y = (boxes["Marine algae"].b() - boxes["Losses"].size());
+// boxes["Exports"].y = (boxes["Losses"].y - boxes["Exports"].size() - y_space);
+// boxes["Over generation / exports"].y = (boxes["Exports"].y - boxes["Over generation / exports"].size() - y_space);
+
+// Colours
+colours = {
+  "Coal reserves":"#8F6F38",
+  "Coal":"#8F6F38", 
+  "Coal imports":"#8F6F38",
+  
+  "Oil reserves":"#A99268", 
+  "Oil":"#A99268", 
+  "Oil imports":"#A99268", 
+  
+  "Gas reserves":"#DDD4C4", 
+  "Ngas":"#DDD4C4", 
+  "Gas imports":"#DDD4C4", 
+  
+  "Solar":"#F6FF00", 
+  "Solar Thermal":"#F6FF00",
+  "Solar PV":"#F6FF00",
+  
+  "UK land based bioenergy":"#30FF00", 
+  "Bio-conversion":"#30FF00", 
+  "Marine algae":"#30FF00", 
+  "Agricultural 'waste'":"#30FF00", 
+  "Other waste":"#30FF00", 
+  "Biomass imports":"#30FF00", 
+  "Biofuel imports":"#30FF00", 
+  
+  "Solid":"#557731", 
+  "Liquid":"#7D9763", 
+  "Gas":"#BCC2AD", 
+  
+  "Electricity grid":"#0000FF",
+  "Thermal generation":"#0000FF", 
+  "CHP":"#FF0000", 
+  "Nuclear":"#E2ABDB", 
+  
+  "District heating":"#FF0000", 
+  "Pumped heat":"#FF0000", 
+  "Useful district heat":"#FF0000",
+  "CHP Heat":"#FF0000",
+  
+  
+  "Electricity imports":"#0000FF", 
+  "Wind":"#C7E7E6", 
+  "Tidal":"#C7E7E6", 
+  "Wave":"#C7E7E6", 
+  "Geothermal":"#C7E7E6", 
+  "Hydro":"#C7E7E6", 
+  
+  "H2 conversion":"#FF6FCF", 
+  "Final electricity":"#0000FF", 
+  "Over generation / exports":"#0000FF", 
+  "H2":"#FF6FCF" 
+};
+
+for(box in boxes) {
+  boxes[box].line_colour = colours[box];
+}
+
+// Add the emissions
+// boxes["Thermal generation"].ghg = 100;
+// boxes["CHP"].ghg = 10;
+// boxes["UK land based bioenergy"].ghg = -100;
+// boxes["Heating and cooling - homes"].ghg = 20;
+
+// Sort out the line positioning
+
+for(box in boxes) { boxes[box].position_and_colour_lines() }
+
+// Fix some of the colours
+var recolour = function(lines,new_colour) {
+  for (var i = 0, ii = lines.length; i < ii; i++) {
+    lines[i].colour = new_colour;
+  }
+}
+recolour(boxes["Losses"].left_lines,"#AAAAAA");
+recolour(boxes["District heating"].left_lines,"#FF0000");
+recolour(boxes["Electricity grid"].left_lines,"#0000FF");
+
+// Acually do the drawing
+var r = Raphael(display_in_element,display_width,display_height); // Define the drawing area
+
+// Want to draw the thickest lines first, so sort
+var sorted_lines = [];
+for(line in lines) { sorted_lines.push(lines[line]) };
+sorted_lines.sort(function(a,b){ return b.size - a.size });
+
+// Draw the lines
+for (var i = 0, ii = sorted_lines.length; i < ii; i++) {
+  if( sorted_lines[i].size > threshold_for_drawing) {
+    sorted_lines[i].draw(r);    
+  }
+}
+
+// Draw the boxes over the top
+for(box in boxes) { 
+  if(boxes[box].size() > threshold_for_drawing) {
+    boxes[box].draw(r);     
+  }
+}

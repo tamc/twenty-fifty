@@ -1,0 +1,74 @@
+%script{ :type => 'text/javascript' }
+  $(document).ready(function() {
+  = scroll_to_last_position
+  })
+
+
+#stories
+  #demand_story.story
+    = stories_for_choices "Homes in 2050", 29,30,34,35
+    = heating_choice
+  
+    = stories_for_choices "Personal transport in 2050",23,24,26
+    = stories_for_choices "Businesses in 2050", 40,44,45
+    = heating_choice_commercial
+    
+    = stories_for_choices "Industry in 2050", 37,38
+    = stories_for_choices "Commercial transport in 2050",25,26,27
+
+  #supply_story.story
+    = stories_for_choices "Thermal power stations in 2050",0,2,3,7,10,"Conventional power stations. ", "CHP units. "
+    = stories_for_choices "Wind in 2050",4,5,12
+    = stories_for_choices "Solar in 2050",8,9,20
+    = stories_for_choices "Other renewable electricity in 2050",6,11
+    = stories_for_choices "Bioenergy in 2050",20,15,16,17,18,19
+    
+  #ghg_story.story
+    %h4 Greenhouse gases
+    = render 'ghg_results'
+    = story_for_choice 47
+
+    %h4 Energy security
+    
+    %p= story_for_choice 48
+    
+    %p 
+      If there are five cold, almost windless, winter days, then up to #{@pathway.gw_backup_needed.round} GW of backup generation capacity will be required to ensure that electricity is always available.
+    
+    %p
+      = story_for_choice 20
+      = story_for_choice 13
+    
+    %table.imports
+      %tr
+        %th.description Imports
+        %th.energy TWh/y
+        %th.percent % of fuel
+      - @pathway.imports_grid.each do |vector|
+        %tr
+          %td.description= vector[0]
+          %td.energy= vector[1]
+          %td.percent= vector[2]                
+    
+
+.clear
+  
+#demand
+  = render "demand_choices"
+
+#supply
+  = render "supply_choices"
+  
+#ghg
+  = render "ghg_choices"
+  = render "ghg_results"
+
+  #keydata
+    %h2 Energy security
+
+    %table.choice_bars.detail#security_detail
+      = choice_bars @pathway.security_row
+
+    = render "security_results"
+      
+.clear

@@ -1,6 +1,5 @@
 %script{ :type => 'text/javascript' }
   $(document).ready(function() {
-  = redirect_to_disclaimer
   = scroll_to_last_position(false) # False means: Remember current position for reload once calcualted
   = poll check_if_calculated_pathway_url(@code)
   })
@@ -23,6 +22,9 @@
   .switch &nbsp;
   = render "ghg_choices"
   
-  #keydata
+  %h2 Energy security
+
+  %table.choice_bars.detail#security_detail
+    = choice_bars @pathway.security_row
       
 .clear

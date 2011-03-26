@@ -1,0 +1,11 @@
+#share
+  = link_to 'Save or share this pathway','#share_popup'
+
+#share_popup
+  #close= link_to image_tag('close.png',:alt => "Close this popup"), '#share_popup'
+  %p To save this pathway, bookmark this page, or take a note of its url:
+  
+  %input{:value => pathway_url(:id=>@code), :size => 100}
+  
+  %p.share_message To share, just send someone the url, or click this share button:
+  = render 'layouts/add_this.html'

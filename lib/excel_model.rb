@@ -5,91 +5,190 @@ class Array
 end
 
 class ExcelModel
-  attr_accessor :excel
+  attr_accessor :excel, :code
     
   def initialize(new_choices = [1.0], excel = Spreadsheet.new)
+    self.code = new_choices
     self.excel = excel
     choice_array = new_choices.respond_to?(:to_a) ? new_choices.to_a : new_choices.to_s.split('').map(&:to_f)
     choice_array = choice_array * choice_size if choice_array.size == 1
     set_choices choice_array
   end
   
-  def supply_choice_mode
-    choices[supply_choice_range].mode
+  def control_sheet
+    excel.sheet3
   end
   
-  def supply_choices_same_as_mode
-    mode = supply_choice_mode
-    choices[supply_choice_range].all? {|v| (v == nil) || (v == mode) }
+  def intermediate_output_sheet
+    excel.sheet8
   end
   
-  def demand_choice_mode
-    choices[demand_choice_range].mode
+  def heating_sheet
+    excel.sheet38
   end
-
-  def demand_choices_same_as_mode
-    mode = demand_choice_mode
-    choices[demand_choice_range].all? {|v| (v == nil) || (v == mode) }
+  
+  def heating_commercial_sheet
+    excel.sheet39
   end
 
   def set_choices(choice_array)
-    5.upto(50).each.with_index do |i,index|
-      excel.sheet3.set("n#{i}", choice_array[index].to_f)
+    choice_type_array = choice_types
+    5.upto(53).each.with_index do |i,index|
+      value = choice_array[index].to_f
+      value = 1.0 if value == 0 && choice_type_array[index] != 0
+      value = 4.0 if value > 4
+      control_sheet.set("ab#{i}", value)
     end
   end
+  
+  def saved_pathways
+    names = input_range('g4','aa4').flatten
+    values = input_range('g5','aa53').transpose
+    names.zip(values.map { |c| c.map(&:to_i).join })
+  end
 
-  def supply_choice_range;  (0..(21-5))                           end
-  def demand_choice_range;  ((24-5)...(46-5))                     end
-  def choice_size;          46-5+1                                end
-  def choices;              input_range('n5','n46').flatten.map(&:to_i);      end
-  #def choice_names;         input_range('d5','d46').flatten;      end
+  def security_row; 48;                       end
+  def sequestration_row; 47                   end
   
-  def choice_names; ["Combustion + CCS", "Nuclear power", "Onshore wind", "Offshore wind", "Hydroelectric", "Marine", "Geothermal", "Distributed solar PV", "Distributed solar thermal", "Micro wind", "The type of fuels from biomass", "Quantity of bioenergy imported", "The way we use our land", "Waste arising", "Marine algae", "Electricity imports / exports", "Storage, demand shifting, backup", 0.0, 0.0, "Domestic space heating and hot water", "Average temperature of homes", "Home insulation", "Home heating electrification", "Home heating that isn't electric", "Commercial heating and cooling", "Commercial heat / cooling demand", "Commercial heating electrification", "Commercial heating that isn't electric", "Domestic lighting, appliances, and cooking", "Home light & appliance demand", "Home light & appliance technology", "Commercial lighting, appliances, and catering", "Commercial light & appliance demand", "Commercial light & appliance technology", "Industrial processes", "Domestic passenger transport", "Individual transport behaviour", "Electrification of individual transport", "Domestic freight", "International aviation", "International shipping", "Geosequestration"] end
+  def supply_choice_range;  (0..21)           end
+  def demand_choice_range;  (23..46)         end
   
+  def choice_size;          49                end
   
-  def descriptions;         input_range('y5','ab46');             end
+  def choices;              input_range('ab5','ab53').flatten.map(&:to_i);      end
+  def choice_names;         input_range('am5','am53').flatten;      end
+  def choice_types;         
+    choice_types = input_range('an5','an53').flatten;      
+    # choice_types[41] = 0 # Don't display commercial heating
+    # choice_types[42] = 0
+    choice_types
+  end
   
-  def scenario_r;           input_range('f5','f46').flatten.map(&:to_i);      end
-  def scenario_a;           input_range('g5','g46').flatten.map(&:to_i);      end
-  def scenario_b;           input_range('h5','h46').flatten.map(&:to_i);      end
-  def scenario_c;           input_range('i5','i46').flatten.map(&:to_i);      end
-  def scenario_d;           input_range('j5','j46').flatten.map(&:to_i);      end
-  def scenario_e;           input_range('k5','k46').flatten.map(&:to_i);      end
-  def scenario_f;           input_range('l5','l46').flatten.map(&:to_i);      end
-
-  
+  def descriptions;         input_range('ao5','ar53');             end
+  def long_descriptions;    input_range('as5','av53');             end
+    
   def years;                output_range('i4','q4').flatten;      end
   
-  def emissions_order;      [151,150,142,143,144,145,146,147,149,148] end
+  def emissions_order;      [151,150,142,143,144,145,146,147,149,148].map { |r| r + 38 } end
   def emissions_labels;     emissions_order.map { |row| output_range("D#{row}","D#{row}").flatten } end
   def emissions_data;       emissions_order.map { |row| output_range("I#{row}","Q#{row}").flatten } end
-  def ghg_totals;           output_range('I152','Q152').flatten;    end
+  def ghg_totals;           output_range('I190','Q190').flatten;    end
 
   def demand_labels;        output_range('D13','D17').flatten;    end
   def demand_data;          output_range('I13','Q17');            end  
   def demand_totals;        output_range('I18','Q18').flatten;    end
 
-  def supply_order;         [180,179,178,168,169,170,171,172,173,174,175,177,176]; end
+  def supply_order;         [180,179,178,168,169,170,171,172,173,174,175,177,176].map { |r| r + 108 }; end
   def supply_labels;        supply_order.map { |row| output_range("D#{row}","D#{row}").flatten } end
   def supply_data;          supply_order.map { |row| output_range("I#{row}","Q#{row}").flatten } end
-  def supply_totals;        output_range('I181','Q181').flatten;  end
-
+  def supply_totals;        output_range('I289','Q289').flatten;  end
+  
+  def electricity_demand_labels;  output_range('D315','D318').flatten;    end
+  def electricity_demand_data;    output_range('I315','Q318');            end  
+  def electricity_demand_totals;  output_range('I319','Q319').flatten;    end
+  
   def electricity_order;    [99,100,101,102,103,104,105,106,108,110]; end
   def electricity_labels;   electricity_order.map { |row| output_range("D#{row}","D#{row}").flatten } end
   def electricity_data;     electricity_order.map { |row| output_range("I#{row}","Q#{row}").flatten } end
   def electricity_totals;   output_range('I111','Q111').flatten;  end
 
+  def electricity_emissions_labels; output_range('D263','D265').flatten   end
+  def electricity_emissions_data;   output_range('I263','Q265')           end
+  def electricity_emissions_totals; output_range('I266','Q266').flatten   end
+  
   def fossil_fuel_totals;  Array.new(9).map.with_index { |v,i| (output_range('I46','q46')+output_range('I43','q43')+output_range('I39','q39')).inject(0) { |a,row| a + row[i] } };  end
   def thermal_plant_totals; output_range('I99','Q99').flatten;    end
-
-  def key_facts;            output_range('H190','J200');          end
+  
+  def imports_grid; 
+    # Fuel, imports TWh/y, total TWh/y
+    [
+      ["Coal",37,39],
+      ["Oil",41,43],
+      ["Gas",44,46],
+      ["Bioenergy",35,36],
+      ["Uranium",23,23],
+      ["Electricity",110,111],
+      ["Primary energy",290,289]
+    ].map do |vector|
+      new_vector = [vector[0]]
+      imports = intermediate_output_sheet.send("q#{vector[1]}").to_f
+      new_vector[1] = imports > 0 ? imports.round : 0
+      total = intermediate_output_sheet.send("q#{vector[2]}").to_f
+      new_vector[2] = total > 0 ? "#{((new_vector[1]/total) * 100).round}%" : "0%"
+      new_vector
+    end
+  end
+  
+  def heating_choice
+    ['Gas boiler (old)',
+    'Gas boiler (new)',
+    'Resistive heating',
+    'Oil-fired boiler',
+    'Solid-fuel boiler',
+    'Stirling engine in home CHP',
+    'Fuel-cell in home CHP',
+    'Air-source heat pump',
+    'Ground-source heat pump',
+    'Geothermal heat',
+    'Community scale gas CHP',
+    'Community scale solid-fuel CHP',
+    'District heating from power stations'].zip(heating_sheet.a('f268','f280').to_grid.flatten,heating_sheet.a('o291','o303').to_grid.flatten)
+  end
+  
+  def heating_choice_commercial
+    ['Gas boiler (old)',
+    'Gas boiler (new)',
+    'Resistive heating',
+    'Oil-fired boiler',
+    'Solid-fuel boiler',
+    'Stirling engine in home CHP',
+    'Fuel-cell in home CHP',
+    'Air-source heat pump',
+    'Ground-source heat pump',
+    'Geothermal heat',
+    'Community scale gas CHP',
+    'Community scale solid-fuel CHP',
+    'District heating from power stations'].zip(heating_commercial_sheet.a('e170','e182').to_grid.flatten,heating_commercial_sheet.a('o170','o182').to_grid.flatten)
+  end
+  
+  def uk_land_implications
+    implication 326, 332
+  end
+  
+  def uk_sea_implications
+    implication 336, 339
+  end
+  
+  def overseas_land_implications
+    implication 343, 344
+  end
+  
+  def length_of_wave_front_implications
+    implication 348,348
+  end
+  
+  def number_of_units_implications
+    implication 352, 357
+  end
+  
+  def implication(start_row,end_row)
+    output_range("c#{start_row}","c#{end_row}").flatten.zip(output_range("q#{start_row}","q#{end_row}").flatten)
+  end
+  
+  def percent_ghg_reduction; intermediate_output_sheet.q153; end
+  def percent_energy_imported; intermediate_output_sheet.q291 end
+  def gw_backup_needed; control_sheet.cd9; end
   
   def output_range(start_range,end_range)
-    excel.sheet7.a(start_range,end_range).to_grid
+    intermediate_output_sheet.a(start_range,end_range).to_grid
+  end
+  
+  def sankey_data
+    output_range('h363','j453')
   end
   
   def input_range(start_range,end_range)
-    excel.sheet3.a(start_range,end_range).to_grid
+    control_sheet.a(start_range,end_range).to_grid
   end
   
 end

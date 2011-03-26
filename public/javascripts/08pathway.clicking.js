@@ -37,10 +37,34 @@ $(document).ready(function() {
   });
 
   $("td.choicebar[title]").tooltip({delay: 0, position: 'top left', offset:[3,3]});
+  $("td.one_page_link[title]").tooltip({delay: 0, position: 'top left', offset:[3,3]});
+  $("span.one_page_link[title]").tooltip({delay: 0, position: 'top left', offset:[3,3]});
+
 
   $('td.choicebar').click( function() {
     $.cookie('scroll',$("body").scrollTop(),{path: '/'});
     location.href = $(this).attr("id").substring(1).replace(/:/g,'/');
   });
   
+  $("ul.dropdown li").hover(function(){
+      $('ul',this).toggle();
+  });
+
+  $("#share a").click( function() {
+    $("#share_popup").toggle();
+    return false;
+  });
+
+  $("#share_popup #close a").click( function() {
+    $("#share_popup").toggle();
+    return false;
+  });
+
+  
+  // prevent jQuery from appending cache busting string to the end of the URL
+  var cache = jQuery.ajaxSettings.cache;
+  jQuery.ajaxSettings.cache = true;
+  jQuery.getScript('http://s7.addthis.com/js/250/addthis_widget.js#username=tomcounsell&domready=1');
+  // Restore jQuery caching setting
+  jQuery.ajaxSettings.cache = cache;
 });

@@ -1,6 +1,9 @@
-%table.choice_bars.big#supply_big
-  = big_choice_bars "Supply measures:", @pathway.supply_choice_range, @pathway.supply_choice_mode.to_i
-        
 %table.choice_bars.detail#supply_detail
   - @pathway.supply_choice_range.each do |index|
+    - if index == 4 || index == 15
+      %tr
+        %td.space &nbsp
     = choice_bars index
+
+%p.note
+  Conventional power stations are built automatically to fill any shortfall in electricity supply. Coal, Oil and Natural Gas are automatically imported to fill any shortfall in bioenergy.

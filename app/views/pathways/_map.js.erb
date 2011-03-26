@@ -1,0 +1,208 @@
+// Retrofit some key methods
+if (!('forEach' in Array.prototype)) {
+    Array.prototype.forEach= function(action, that /*opt*/) {
+        for (var i= 0, n= this.length; i<n; i++)
+            if (i in this)
+                action.call(that, this[i], i, this);
+    };
+}
+if (!('map' in Array.prototype)) {
+    Array.prototype.map= function(mapper, that /*opt*/) {
+        var other= new Array(this.length);
+        for (var i= 0, n= this.length; i<n; i++)
+            if (i in this)
+                other[i]= mapper.call(that, this[i], i, this);
+        return other;
+    };
+}
+
+// Unless otherwise specified, all measurements are in pixels
+function l(message) {window.console.log(message)};
+
+// The drawing area
+var display_in_element = 'map'
+var display_width = 1200;
+var display_height = 800;
+
+var map_image_url = '/images/uk.png';
+var map_width = 492;
+var map_height = 725;
+var map_offset_x = 150;
+var map_offset_y = 0;
+
+var km = 0.69; // Pixels per km for coloured areas on map
+var m = km / 1000.0;
+var m2 = m * m;
+var ha = 10000 * m2;
+var km2 = 1e6 * m2;
+var Mha = 1e6 * ha;
+
+var GW = 2; // Pixels per GW for points marking power station sizes
+var MW = GW/1000;
+
+// This takes a hash of options and a hash of default options
+// and returns a hash with the defaults where they aren't 
+// specified in the options
+function options_or_their_defaults(options,defaults) {
+  options = options || {};
+  defaults = defaults || {};
+  for (var opt in defaults) { if (!(opt in options)) { options[opt] = defaults[opt];}}
+  return options;
+}
+
+// These add new primitives to Raphael
+// Raphael.fn.square = function (x,y,side) { return this.rect(x-(side/2),y-(side/2),side,side) };
+// Raphael.fn.square_area = function(x,y,area) { return this.square(x,y,Math.sqrt(area))};
+Raphael.fn.up_labeled_square = function (label,area,colour) {
+  if(area < 10) { return };
+  var side = Math.sqrt(area);
+  var sq = this.rect(x,y-side,side,side).attr({stroke: colour, fill: colour,'fill-opacity': "0.5"});
+  var label = this.text(x-2,y-(side/2),label).attr({'text-anchor':'end', fill: 'black'})
+  y = y - side - 5;
+  return sq;
+};
+
+Raphael.fn.up_right_labeled_square = function (label,area,colour) { 
+  if(area < 10) { return };
+  var side = Math.sqrt(area);
+  var sq = this.rect(x-(side/2),y-side,side,side).attr({stroke: colour, fill: colour,'fill-opacity': "0.5"});
+  var label = this.text(x+(side/2)+4,y-(side/2),label).attr({'text-anchor':'start', fill: 'black'})
+  y = y - side - 5;
+  return sq;
+};
+
+Raphael.fn.down_labeled_square = function (label,area,colour) { 
+  if(area < 10) { return }; 
+  var side = Math.sqrt(area);
+  var sq = this.rect(x-side,y,side,side).attr({stroke: colour, fill: colour,'fill-opacity': "0.5"});
+  var label = this.text(x+4,y+(side/2),label).attr({'text-anchor':'start', fill: 'black'})
+  y = y + side + 5;
+  return sq;
+};
+
+
+var r = Raphael(display_in_element,display_width,display_height); // Define the drawing area
+r.image(map_image_url, map_offset_x, map_offset_y, map_width, map_height); // Add the map graphic
+
+r.text(20,10,"Illustration of scale of land and sea use in 2050 (positions are arbitrary)").attr({'font-weight':'bold','text-anchor':'start'});
+
+<%- 
+#408000
+colours = {
+  'III.a.2' => '#ff0000',
+  'III.a.1' => '#ff0000',
+  'IV.c' => '#aa0000',  
+  'VI.a.Biocrop' => '#00ff00',
+  'VI.a.Forestry' => '#408000',
+  'VI.c' => '#00ff00',
+  'V.b' => '#00ff00',
+  'IV.a' => '#ffff00',
+  'IV.b' => '#cccc00',
+  'VII.a' => '#ffff00',
+  'III.b' => '#0000ff',
+  'III.c.TidalRange' => '#0000ff',
+  'III.c.TidalStream' => '#aaaaff',
+  'I.a' => '#666',
+  'I.b' => '#CCC',
+  'II.a' => '#FF0',
+  'III.d' => '#F00',
+  'VII.c' => '#008000',
+  'VI.b' => '#F00'
+}
+
+labels = {
+  'III.a.2' => 'Offshore wind',
+  'III.a.1' => 'Onshore wind',
+  'IV.c' => 'Micro wind',  
+  'VI.a.Biocrop' => 'Energy crops',
+  'VI.a.Forestry' => 'Forest',  
+  'VI.c' => 'Marine algae',
+  'V.b' => 'Biocrops',
+  'IV.a' => 'Solar PV',
+  'IV.b' => 'Solar thermal',
+  'VII.a' => 'Solar PV',
+  'III.b' => 'Hydro',
+  'III.c.TidalRange' => 'Tidal range',
+  'III.c.TidalStream' => 'Tidal stream',
+  'I.a' => '2 GW coal, gas or biomass power stations without CCS',
+  'I.b' => '1.2 GW coal, gas or biomass power stations with CCS',
+  'II.a' => '3 GW nuclear power station',
+  'III.d' => '0.01 GW geothermal stations',
+  'VII.c' => '1 GW gas standby power stations',
+  'VI.b' => '215 kt/y waste to energy conversion facilities',
+}
+%>
+  
+<%- wave = @pathway.length_of_wave_front_implications.first %>
+<%- if wave.last > 0 %>
+var path = "M100,30 l0,"+(<%= wave.last %>*km);
+r.path(path).attr({stroke: 'blue', 'stroke-width': 2});
+r.text(98,34,"Wave").attr({'text-anchor':'end'})
+<%- end %>
+
+x = (map_width/2) + map_offset_x;
+y = map_height + map_offset_y - 100;
+
+<%- @pathway.uk_land_implications.sort_by { |area| area.last }.reverse.each do |area| %>
+r.up_labeled_square("<%= labels[area.first] %>",<%= area.last %>*km2,'<%= colours[area.first] %>',1);
+<%- end %>
+
+x = (map_width/2) + map_offset_x + 200;
+y = 30;
+
+<%- @pathway.uk_sea_implications.sort_by { |area| area.last }.reverse.each do |area| %>
+r.down_labeled_square("<%= labels[area.first] %>",<%= area.last %>*km2,'<%= colours[area.first] %>');
+<%- end %>
+
+<%- if @pathway.overseas_land_implications.max { |a| a.last }.last > 0 %>
+r.path("M244,695 q0,-200 -200,-200").attr({'stroke':'black','stroke':'#ccc'});
+r.text(44,510,"Imports").attr({'fill':'#ccc','font-weight':'bold','text-anchor':'start'});
+
+x = map_offset_x - 105;
+y = map_height + map_offset_y - 30;
+
+<%- @pathway.overseas_land_implications.sort_by { |area| area.last }.reverse.each do |area| %>
+r.up_labeled_square("<%= labels[area.first] %>",<%= area.last %>*km2,'<%= colours[area.first] %>');
+<%- end %>
+<%- end %>
+
+r.text(700,10,"Illustration of the number of thermal power stations in 2050 (scales and positions are arbitrary)").attr({'font-weight':'bold','text-anchor':'start'});
+
+y = 35;
+x = 955;
+
+function point_stack(number,colour,label,size) {
+  var x_count = 0;
+  var x_step = size < 10 ? 5 : 1.5*size;
+  var y_step = size < 10 ? 5 : 1.5*size;
+  var width = 100;
+  if(number > 0) {
+    r.text(x-20,y,label).attr({'text-anchor':'end'}); 
+  }
+  while(number > 0) {
+    r.circle(x+(x_count*x_step),y,size*km).attr({'stroke-width':0,'fill':colour});
+    r.circle(x+(x_count*x_step),y,1).attr({'stroke-width':0,'fill':'black'});  
+    number = number - 1;
+    x_count = x_count + 1;
+    if((x_count*x_step) > width) {
+      x_count = 0
+      y = y + y_step;
+    }
+  } 
+  y = y +30;
+};
+
+<%-
+  pointSizes = {
+    'I.a' => 2,
+    'I.b' => 1.2,
+    'II.a' => 3,
+    'III.d' => 0.01,
+    'VII.c' => 1,
+    'VI.b' => 0.01,
+  }
+-%>
+
+<%- @pathway.number_of_units_implications.sort_by { |units| units.last }.reverse.each do |units| %>
+  point_stack(<%= units.last.round %>,'<%= colours[units.first] %>',"<%= units.last.round %> x <%= labels[units.first] %>",<%= ((pointSizes[units.first]**0.5)*10).round %>);
+<%- end %>

@@ -4,10 +4,6 @@ module ApplicationHelper
   def other_meta_data
   end
   
-  def redirect_to_disclaimer
-    render 'layouts/redirect_to_disclaimer.js'
-  end
-  
   def chart_js
     ""
   end
@@ -26,18 +22,12 @@ module ApplicationHelper
     "pollAndReload('#{url}');" 
   end
   
-  def stacked_area_chart(div,title,labels,data,unit = 'TWh of energy', max = 4000,chart_labels = [], min = 0)
-    "new Highcharts.Chart(#{chart_options_for(div,title,labels,data,unit, max,chart_labels, min)});"
+  def stacked_area_chart(*args)
+    "new Highcharts.Chart(#{chart_options_for(*args)});"
   end
   
   def showing_primary_energy?
     action_name == "primary_energy_chart"
-  end
-  
-  def big_choice_bars(title,range,choice)
-    "<tr class='#{choice_row_class(choice)}'><td class='description'>#{title}</td>" +
-    bars(choice,(1..4).map { |i| path_as_id_for_code(new_choice_range_absolute(range,i))}, big_choice_details) +
-    "</tr>"
   end
   
   def choice_bars(index)
@@ -47,31 +37,28 @@ module ApplicationHelper
   def new_choice_code(choice_index,value)
     new_choices = @pathway.choices.dup
     new_choices[choice_index] = value
-    new_choices.join
-  end
-
-  def new_choice_range_absolute(choice_range,value)
-    new_choices = @pathway.choices.dup
-    choice_range.each do |i|
-      if new_choices[i]
-        new_choices[i] = value
-      end
-    end
+    # new_choices[41] = new_choices[30] # This sets commercial heating choice to be the same as residential
+    # new_choices[42] = new_choices[31]    
     new_choices.join
   end
 
   def choice_row(description,choice,index,descriptions)
     return "" unless description
-    return "" if choice == 0
-    "<tr class='#{choice_row_class(choice,index)}'>" +
+    return "" if @pathway.choice_types[index] == 0
+    "<tr class='#{choice_row_class(choice,index)} #{abcd_class(index)}'>" +
     description_link(description,choice,index) +
     bars(choice,ids_for_choices(index),descriptions,index) +
-    "</tr>"
+    "<td class='control one_page_link' title='More information about #{description.downcase}.'>#{link_to "i", "/onepage/#{index}.pdf?choice=#{choice}", :target => '_blank' }</td></tr>"
   end
   
   def choice_row_class(choice,index = nil)
     return "choice#{choice}" unless @choice && index && @choice == index
     "selected_choice"
+  end
+  
+  def abcd_class(index)
+    return "abcd" if %w{A B C D}.include?(@pathway.choice_types[index])
+    nil
   end
   
   def description_link(description,choice,index)
@@ -104,17 +91,20 @@ module ApplicationHelper
   end
   
   def bar_class(row,choice,i)
+    maximum_choice = @pathway.choice_types[row]
+    name = %w{A B C D}.include?(maximum_choice) ? ALTERNATIVE_BAR_NAMES[i] : BAR_NAMES[i]
+    return "" if name > maximum_choice.to_s
     "choicebar #{choice > i ? 'full' : 'empty' } choice#{i+1}"
   end
   
   BAR_NAMES = %w{ 1 2 3 4}
   ALTERNATIVE_BAR_NAMES = %w{ A B C D }
-  ROWS_THAT_USE_ALTERNATIVE_BAR_NAMES = [10, 12, 13, 22, 23, 26, 27, 30, 33, 34, ]
   
   def bar_names(row, index)
-    return BAR_NAMES[index] unless row
-    return BAR_NAMES[index] unless ROWS_THAT_USE_ALTERNATIVE_BAR_NAMES.include?(row)
-    return ALTERNATIVE_BAR_NAMES[index]
+    maximum_choice = @pathway.choice_types[row]
+    name = %w{A B C D}.include?(maximum_choice) ? ALTERNATIVE_BAR_NAMES[index] : BAR_NAMES[index]
+    return "" if name > maximum_choice.to_s
+    name
   end
   
   def ids_for_choices(index)

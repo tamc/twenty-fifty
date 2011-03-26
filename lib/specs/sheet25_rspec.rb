@@ -1,371 +1,411 @@
 # coding: utf-8
 require_relative '../spreadsheet'
-# IV.b
-describe Sheet25 do
+# IV.a
+describe 'Sheet25' do
   def sheet25; $spreadsheet ||= Spreadsheet.new; $spreadsheet.sheet25; end
 
   it 'cell e8 should equal 1.0' do
-    sheet25.e8.should be_close(1.0,0.1)
+    sheet25.e8.should be_within(0.1).of(1.0)
   end
 
-  it 'cell f43 should equal 0.0' do
-    sheet25.f43.should be_close(0.0,1.0e-08)
+  it 'cell f43 should equal 0.02' do
+    sheet25.f43.should be_within(0.002).of(0.02)
   end
 
-  it 'cell g43 should equal 0.0' do
-    sheet25.g43.should be_close(0.0,1.0e-08)
+  it 'cell g43 should equal 0.033' do
+    sheet25.g43.should be_within(0.0033000000000000004).of(0.033)
   end
 
-  it 'cell h43 should equal 0.0' do
-    sheet25.h43.should be_close(0.0,1.0e-08)
+  it 'cell h43 should equal 0.016' do
+    sheet25.h43.should be_within(0.0016).of(0.016)
   end
 
   it 'cell i43 should equal 0.0' do
-    sheet25.i43.should be_close(0.0,1.0e-08)
+    sheet25.i43.should be_within(1.0e-08).of(0.0)
   end
 
   it 'cell j43 should equal 0.0' do
-    sheet25.j43.should be_close(0.0,1.0e-08)
+    sheet25.j43.should be_within(1.0e-08).of(0.0)
   end
 
   it 'cell k43 should equal 0.0' do
-    sheet25.k43.should be_close(0.0,1.0e-08)
+    sheet25.k43.should be_within(1.0e-08).of(0.0)
   end
 
   it 'cell l43 should equal 0.0' do
-    sheet25.l43.should be_close(0.0,1.0e-08)
+    sheet25.l43.should be_within(1.0e-08).of(0.0)
   end
 
   it 'cell m43 should equal 0.0' do
-    sheet25.m43.should be_close(0.0,1.0e-08)
+    sheet25.m43.should be_within(1.0e-08).of(0.0)
   end
 
   it 'cell n43 should equal 0.0' do
-    sheet25.n43.should be_close(0.0,1.0e-08)
+    sheet25.n43.should be_within(1.0e-08).of(0.0)
   end
 
   it 'cell o43 should equal 0.0' do
-    sheet25.o43.should be_close(0.0,1.0e-08)
+    sheet25.o43.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell f45 should equal 0.0' do
-    sheet25.f45.should be_close(0.0,1.0e-08)
+  it 'cell f52 should equal 0.02' do
+    sheet25.f52.should be_within(0.002).of(0.02)
   end
 
-  it 'cell g45 should equal 0.0' do
-    sheet25.g45.should be_close(0.0,1.0e-08)
+  it 'cell g52 should equal 0.033' do
+    sheet25.g52.should be_within(0.0033000000000000004).of(0.033)
   end
 
-  it 'cell h45 should equal 0.0' do
-    sheet25.h45.should be_close(0.0,1.0e-08)
+  it 'cell h52 should equal 0.016' do
+    sheet25.h52.should be_within(0.0016).of(0.016)
   end
 
-  it 'cell i45 should equal 0.0' do
-    sheet25.i45.should be_close(0.0,1.0e-08)
+  it 'cell i52 should equal 0.0' do
+    sheet25.i52.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell j45 should equal 0.0' do
-    sheet25.j45.should be_close(0.0,1.0e-08)
+  it 'cell j52 should equal 0.0' do
+    sheet25.j52.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell k45 should equal 0.0' do
-    sheet25.k45.should be_close(0.0,1.0e-08)
+  it 'cell k52 should equal 0.0' do
+    sheet25.k52.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell l45 should equal 0.0' do
-    sheet25.l45.should be_close(0.0,1.0e-08)
+  it 'cell l52 should equal 0.0' do
+    sheet25.l52.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell m45 should equal 0.0' do
-    sheet25.m45.should be_close(0.0,1.0e-08)
+  it 'cell m52 should equal 0.0' do
+    sheet25.m52.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell n45 should equal 0.0' do
-    sheet25.n45.should be_close(0.0,1.0e-08)
+  it 'cell n52 should equal 0.0' do
+    sheet25.n52.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell o45 should equal 0.0' do
-    sheet25.o45.should be_close(0.0,1.0e-08)
+  it 'cell o52 should equal 0.0' do
+    sheet25.o52.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell f48 should equal 0.0' do
-    sheet25.f48.should be_close(0.0,1.0e-08)
+  it 'cell f54 should equal 0.00194' do
+    sheet25.f54.should be_within(0.00019400000000000003).of(0.00194)
   end
 
-  it 'cell g48 should equal 0.0' do
-    sheet25.g48.should be_close(0.0,1.0e-08)
+  it 'cell g54 should equal 0.0032010000000000003' do
+    sheet25.g54.should be_within(0.00032010000000000003).of(0.0032010000000000003)
   end
 
-  it 'cell h48 should equal 0.0' do
-    sheet25.h48.should be_close(0.0,1.0e-08)
+  it 'cell h54 should equal 0.001552' do
+    sheet25.h54.should be_within(0.0001552).of(0.001552)
   end
 
-  it 'cell i48 should equal 0.0' do
-    sheet25.i48.should be_close(0.0,1.0e-08)
+  it 'cell i54 should equal 0.0' do
+    sheet25.i54.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell j48 should equal 0.0' do
-    sheet25.j48.should be_close(0.0,1.0e-08)
+  it 'cell j54 should equal 0.0' do
+    sheet25.j54.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell k48 should equal 0.0' do
-    sheet25.k48.should be_close(0.0,1.0e-08)
+  it 'cell k54 should equal 0.0' do
+    sheet25.k54.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell l48 should equal 0.0' do
-    sheet25.l48.should be_close(0.0,1.0e-08)
+  it 'cell l54 should equal 0.0' do
+    sheet25.l54.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell m48 should equal 0.0' do
-    sheet25.m48.should be_close(0.0,1.0e-08)
+  it 'cell m54 should equal 0.0' do
+    sheet25.m54.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell n48 should equal 0.0' do
-    sheet25.n48.should be_close(0.0,1.0e-08)
+  it 'cell n54 should equal 0.0' do
+    sheet25.n54.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell o48 should equal 0.0' do
-    sheet25.o48.should be_close(0.0,1.0e-08)
+  it 'cell o54 should equal 0.0' do
+    sheet25.o54.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell f50 should equal 0.0' do
-    sheet25.f50.should be_close(0.0,1.0e-08)
+  it 'cell f55 should equal 0.01700604' do
+    sheet25.f55.should be_within(0.001700604).of(0.01700604)
   end
 
-  it 'cell g50 should equal 0.0' do
-    sheet25.g50.should be_close(0.0,1.0e-08)
+  it 'cell g55 should equal 0.028059966000000006' do
+    sheet25.g55.should be_within(0.002805996600000001).of(0.028059966000000006)
   end
 
-  it 'cell h50 should equal 0.0' do
-    sheet25.h50.should be_close(0.0,1.0e-08)
+  it 'cell h55 should equal 0.013604831999999999' do
+    sheet25.h55.should be_within(0.0013604832).of(0.013604831999999999)
   end
 
-  it 'cell i50 should equal 0.0' do
-    sheet25.i50.should be_close(0.0,1.0e-08)
+  it 'cell i55 should equal 0.0' do
+    sheet25.i55.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell j50 should equal 0.0' do
-    sheet25.j50.should be_close(0.0,1.0e-08)
+  it 'cell j55 should equal 0.0' do
+    sheet25.j55.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell k50 should equal 0.0' do
-    sheet25.k50.should be_close(0.0,1.0e-08)
+  it 'cell k55 should equal 0.0' do
+    sheet25.k55.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell l50 should equal 0.0' do
-    sheet25.l50.should be_close(0.0,1.0e-08)
+  it 'cell l55 should equal 0.0' do
+    sheet25.l55.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell m50 should equal 0.0' do
-    sheet25.m50.should be_close(0.0,1.0e-08)
+  it 'cell m55 should equal 0.0' do
+    sheet25.m55.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell n50 should equal 0.0' do
-    sheet25.n50.should be_close(0.0,1.0e-08)
+  it 'cell n55 should equal 0.0' do
+    sheet25.n55.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell o50 should equal 0.0' do
-    sheet25.o50.should be_close(0.0,1.0e-08)
+  it 'cell o55 should equal 0.0' do
+    sheet25.o55.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell f53 should equal 0.0' do
-    sheet25.f53.should be_close(0.0,1.0e-08)
+  it 'cell f58 should equal 0.0097' do
+    sheet25.f58.should be_within(0.00097).of(0.0097)
   end
 
-  it 'cell g53 should equal 0.0' do
-    sheet25.g53.should be_close(0.0,1.0e-08)
+  it 'cell g58 should equal 0.016005000000000002' do
+    sheet25.g58.should be_within(0.0016005000000000004).of(0.016005000000000002)
   end
 
-  it 'cell h53 should equal 0.0' do
-    sheet25.h53.should be_close(0.0,1.0e-08)
+  it 'cell h58 should equal 0.0077599999999999995' do
+    sheet25.h58.should be_within(0.000776).of(0.0077599999999999995)
   end
 
-  it 'cell i53 should equal 0.0' do
-    sheet25.i53.should be_close(0.0,1.0e-08)
+  it 'cell i58 should equal 0.0' do
+    sheet25.i58.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell j53 should equal 0.0' do
-    sheet25.j53.should be_close(0.0,1.0e-08)
+  it 'cell j58 should equal 0.0' do
+    sheet25.j58.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell k53 should equal 0.0' do
-    sheet25.k53.should be_close(0.0,1.0e-08)
+  it 'cell k58 should equal 0.0' do
+    sheet25.k58.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell l53 should equal 0.0' do
-    sheet25.l53.should be_close(0.0,1.0e-08)
+  it 'cell l58 should equal 0.0' do
+    sheet25.l58.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell m53 should equal 0.0' do
-    sheet25.m53.should be_close(0.0,1.0e-08)
+  it 'cell m58 should equal 0.0' do
+    sheet25.m58.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell n53 should equal 0.0' do
-    sheet25.n53.should be_close(0.0,1.0e-08)
+  it 'cell n58 should equal 0.0' do
+    sheet25.n58.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell o53 should equal 0.0' do
-    sheet25.o53.should be_close(0.0,1.0e-08)
+  it 'cell o58 should equal 0.0' do
+    sheet25.o58.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell f61 should equal 0.0' do
-    sheet25.f61.should be_close(0.0,1.0e-08)
+  it 'cell f60 should equal 88181.81818181818' do
+    sheet25.f60.should be_within(8818.181818181818).of(88181.81818181818)
   end
 
-  it 'cell g61 should equal 0.0' do
-    sheet25.g61.should be_close(0.0,1.0e-08)
+  it 'cell g60 should equal 145500.0' do
+    sheet25.g60.should be_within(14550.0).of(145500.0)
   end
 
-  it 'cell h61 should equal 0.0' do
-    sheet25.h61.should be_close(0.0,1.0e-08)
+  it 'cell h60 should equal 70545.45454545454' do
+    sheet25.h60.should be_within(7054.545454545455).of(70545.45454545454)
   end
 
-  it 'cell i61 should equal 0.0' do
-    sheet25.i61.should be_close(0.0,1.0e-08)
+  it 'cell i60 should equal 0.0' do
+    sheet25.i60.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell j61 should equal 0.0' do
-    sheet25.j61.should be_close(0.0,1.0e-08)
+  it 'cell j60 should equal 0.0' do
+    sheet25.j60.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell k61 should equal 0.0' do
-    sheet25.k61.should be_close(0.0,1.0e-08)
+  it 'cell k60 should equal 0.0' do
+    sheet25.k60.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell l61 should equal 0.0' do
-    sheet25.l61.should be_close(0.0,1.0e-08)
+  it 'cell l60 should equal 0.0' do
+    sheet25.l60.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell m61 should equal 0.0' do
-    sheet25.m61.should be_close(0.0,1.0e-08)
+  it 'cell m60 should equal 0.0' do
+    sheet25.m60.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell n61 should equal 0.0' do
-    sheet25.n61.should be_close(0.0,1.0e-08)
+  it 'cell n60 should equal 0.0' do
+    sheet25.n60.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell o61 should equal 0.0' do
-    sheet25.o61.should be_close(0.0,1.0e-08)
+  it 'cell o60 should equal 0.0' do
+    sheet25.o60.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell f62 should equal 0.0' do
-    sheet25.f62.should be_close(0.0,1.0e-08)
+  it 'cell f71 should equal 0.01700604' do
+    sheet25.f71.should be_within(0.001700604).of(0.01700604)
   end
 
-  it 'cell g62 should equal 0.0' do
-    sheet25.g62.should be_close(0.0,1.0e-08)
+  it 'cell g71 should equal 0.028059966000000006' do
+    sheet25.g71.should be_within(0.002805996600000001).of(0.028059966000000006)
   end
 
-  it 'cell h62 should equal 0.0' do
-    sheet25.h62.should be_close(0.0,1.0e-08)
+  it 'cell h71 should equal 0.013604831999999999' do
+    sheet25.h71.should be_within(0.0013604832).of(0.013604831999999999)
   end
 
-  it 'cell i62 should equal 0.0' do
-    sheet25.i62.should be_close(0.0,1.0e-08)
+  it 'cell i71 should equal 0.0' do
+    sheet25.i71.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell j62 should equal 0.0' do
-    sheet25.j62.should be_close(0.0,1.0e-08)
+  it 'cell j71 should equal 0.0' do
+    sheet25.j71.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell k62 should equal 0.0' do
-    sheet25.k62.should be_close(0.0,1.0e-08)
+  it 'cell k71 should equal 0.0' do
+    sheet25.k71.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell l62 should equal 0.0' do
-    sheet25.l62.should be_close(0.0,1.0e-08)
+  it 'cell l71 should equal 0.0' do
+    sheet25.l71.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell m62 should equal 0.0' do
-    sheet25.m62.should be_close(0.0,1.0e-08)
+  it 'cell m71 should equal 0.0' do
+    sheet25.m71.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell n62 should equal 0.0' do
-    sheet25.n62.should be_close(0.0,1.0e-08)
+  it 'cell n71 should equal 0.0' do
+    sheet25.n71.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell o62 should equal 0.0' do
-    sheet25.o62.should be_close(0.0,1.0e-08)
+  it 'cell o71 should equal 0.0' do
+    sheet25.o71.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell f63 should equal 0.0' do
-    sheet25.f63.should be_close(0.0,1.0e-08)
+  it 'cell f72 should equal -0.01700604' do
+    sheet25.f72.should be_within(0.001700604).of(-0.01700604)
   end
 
-  it 'cell g63 should equal 0.0' do
-    sheet25.g63.should be_close(0.0,1.0e-08)
+  it 'cell g72 should equal -0.028059966000000006' do
+    sheet25.g72.should be_within(0.002805996600000001).of(-0.028059966000000006)
   end
 
-  it 'cell h63 should equal 0.0' do
-    sheet25.h63.should be_close(0.0,1.0e-08)
+  it 'cell h72 should equal -0.013604831999999999' do
+    sheet25.h72.should be_within(0.0013604832).of(-0.013604831999999999)
   end
 
-  it 'cell i63 should equal 0.0' do
-    sheet25.i63.should be_close(0.0,1.0e-08)
+  it 'cell i72 should equal 0.0' do
+    sheet25.i72.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell j63 should equal 0.0' do
-    sheet25.j63.should be_close(0.0,1.0e-08)
+  it 'cell j72 should equal 0.0' do
+    sheet25.j72.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell k63 should equal 0.0' do
-    sheet25.k63.should be_close(0.0,1.0e-08)
+  it 'cell k72 should equal 0.0' do
+    sheet25.k72.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell l63 should equal 0.0' do
-    sheet25.l63.should be_close(0.0,1.0e-08)
+  it 'cell l72 should equal 0.0' do
+    sheet25.l72.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell m63 should equal 0.0' do
-    sheet25.m63.should be_close(0.0,1.0e-08)
+  it 'cell m72 should equal 0.0' do
+    sheet25.m72.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell n63 should equal 0.0' do
-    sheet25.n63.should be_close(0.0,1.0e-08)
+  it 'cell n72 should equal 0.0' do
+    sheet25.n72.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell o63 should equal 0.0' do
-    sheet25.o63.should be_close(0.0,1.0e-08)
+  it 'cell o72 should equal 0.0' do
+    sheet25.o72.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell f64 should equal 0.0' do
-    sheet25.f64.should be_close(0.0,1.0e-08)
+  it 'cell f81 should equal 0.08818181818181817' do
+    sheet25.f81.should be_within(0.008818181818181817).of(0.08818181818181817)
   end
 
-  it 'cell g64 should equal 0.0' do
-    sheet25.g64.should be_close(0.0,1.0e-08)
+  it 'cell g81 should equal 0.1455' do
+    sheet25.g81.should be_within(0.01455).of(0.1455)
   end
 
-  it 'cell h64 should equal 0.0' do
-    sheet25.h64.should be_close(0.0,1.0e-08)
+  it 'cell h81 should equal 0.07054545454545454' do
+    sheet25.h81.should be_within(0.007054545454545454).of(0.07054545454545454)
   end
 
-  it 'cell i64 should equal 0.0' do
-    sheet25.i64.should be_close(0.0,1.0e-08)
+  it 'cell i81 should equal 0.0' do
+    sheet25.i81.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell j64 should equal 0.0' do
-    sheet25.j64.should be_close(0.0,1.0e-08)
+  it 'cell j81 should equal 0.0' do
+    sheet25.j81.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell k64 should equal 0.0' do
-    sheet25.k64.should be_close(0.0,1.0e-08)
+  it 'cell k81 should equal 0.0' do
+    sheet25.k81.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell l64 should equal 0.0' do
-    sheet25.l64.should be_close(0.0,1.0e-08)
+  it 'cell l81 should equal 0.0' do
+    sheet25.l81.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell m64 should equal 0.0' do
-    sheet25.m64.should be_close(0.0,1.0e-08)
+  it 'cell m81 should equal 0.0' do
+    sheet25.m81.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell n64 should equal 0.0' do
-    sheet25.n64.should be_close(0.0,1.0e-08)
+  it 'cell n81 should equal 0.0' do
+    sheet25.n81.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell o64 should equal 0.0' do
-    sheet25.o64.should be_close(0.0,1.0e-08)
+  it 'cell o81 should equal 0.0' do
+    sheet25.o81.should be_within(1.0e-08).of(0.0)
+  end
+
+  it 'cell f82 should equal 0.02' do
+    sheet25.f82.should be_within(0.002).of(0.02)
+  end
+
+  it 'cell g82 should equal 0.033' do
+    sheet25.g82.should be_within(0.0033000000000000004).of(0.033)
+  end
+
+  it 'cell h82 should equal 0.016' do
+    sheet25.h82.should be_within(0.0016).of(0.016)
+  end
+
+  it 'cell i82 should equal 0.0' do
+    sheet25.i82.should be_within(1.0e-08).of(0.0)
+  end
+
+  it 'cell j82 should equal 0.0' do
+    sheet25.j82.should be_within(1.0e-08).of(0.0)
+  end
+
+  it 'cell k82 should equal 0.0' do
+    sheet25.k82.should be_within(1.0e-08).of(0.0)
+  end
+
+  it 'cell l82 should equal 0.0' do
+    sheet25.l82.should be_within(1.0e-08).of(0.0)
+  end
+
+  it 'cell m82 should equal 0.0' do
+    sheet25.m82.should be_within(1.0e-08).of(0.0)
+  end
+
+  it 'cell n82 should equal 0.0' do
+    sheet25.n82.should be_within(1.0e-08).of(0.0)
+  end
+
+  it 'cell o82 should equal 0.0' do
+    sheet25.o82.should be_within(1.0e-08).of(0.0)
   end
 
 end

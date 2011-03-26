@@ -1,18 +1,21 @@
 Highcharts.setOptions({
   chart: {
-    margin: [60, 20, 50, 60],
+    borderColor: '#ffffff',
     zoomType: 'xy',
-    defaultSeriesType: 'area'
+    defaultSeriesType: 'area',
+    animation: false,
+    spacingTop: 5,
+    spacingBottom: 10,
+    spacingLeft: 3,
+    spacingRight: 13
   },
-  credits: {
-    enabled: false
-  },
+  title: { margin: 5 },
+  credits: { enabled: false },
+  legend: { enabled: false },
   xAxis: {
     categories: [2010,2015,2020,2025,2030,2035,2040,2045,2050],
     tickWidth: 0,
-    title: {
-      enabled: false
-    },
+    title: { enabled: false },
     labels: {
       formatter: function() {
         switch(this.value) {
@@ -24,11 +27,6 @@ Highcharts.setOptions({
     }
   },
   yAxis: {
-    title: {
-      text: 'Energy in TWh'
-    },
-    min: null,
-    max: 3500,
     labels: {
       formatter: function() {
         return this.value / 1;
@@ -38,22 +36,39 @@ Highcharts.setOptions({
   tooltip: {
     formatter: function() {
       return '<b>'+ this.series.name +'</b><br/>'+
-      this.x +': '+ Highcharts.numberFormat(this.y, 0, ',') +' '+(this.series.chart.options.yAxis ? this.series.chart.options.yAxis.title.text : "");
+      this.x +': '+ Highcharts.numberFormat(this.y, 0, ',') +' TWh/yr';
     }
   },
   plotOptions: {
     area: {
       stacking: 'normal',
-      lineColor: '#666666',
       animation: false,
       lineWidth: 1,
+      shadow: false,
       lineColor: '#fff',
       marker: {
-        enabled: false
+        enabled: false,
+        states: {
+          hover: {
+            enabled: true,
+            radius: 5
+          }
+        }
+      }
+    },
+    line: {
+      animation: false,
+      lineWidth: 1,
+      shadow: false,
+      marker: {
+        enabled: false,
+        states: {
+          hover: {
+            enabled: true,
+            radius: 5
+          }
+        }
       }
     }
-  },
-  legend: {
-    enabled: false
   }
 });

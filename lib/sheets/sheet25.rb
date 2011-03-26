@@ -1,11 +1,11 @@
 # coding: utf-8
-# IV.b
+# IV.a
 class Sheet25 < Spreadsheet
-  def e8; @e8 ||= sheet3.n13; end
+  def e8; @e8 ||= sheet3.ab13; end
   def c16; 1.0; end
-  def f16; 0.0; end
-  def g16; 0.0; end
-  def h16; 0.0; end
+  def f16; 0.02; end
+  def g16; 0.033; end
+  def h16; 0.016; end
   def i16; 0.0; end
   def j16; 0.0; end
   def k16; 0.0; end
@@ -14,38 +14,48 @@ class Sheet25 < Spreadsheet
   def n16; 0.0; end
   def o16; 0.0; end
   def c17; 2.0; end
-  def f17; 0.0; end
-  def g17; 0.0697674418604651; end
-  def h17; 0.186046511627907; end
-  def i17; 0.302325581395349; end
-  def j17; 0.418604651162791; end
-  def k17; 0.534883720930233; end
-  def l17; 0.651162790697674; end
-  def m17; 0.767441860465116; end
-  def n17; 0.883720930232558; end
-  def o17; 1.0; end
+  def f17; 0.02; end
+  def g17; 0.04812208; end
+  def h17; 0.207906650909; end
+  def i17; 0.898239965774483; end
+  def j17; 2.28206289133007; end
+  def k17; 5.79779484148812; end
+  def l17; 10.8246133579908; end
+  def m17; 20.2097965784382; end
+  def n17; 37.7321447181613; end
+  def o17; 70.4467627621362; end
   def c18; 3.0; end
-  def f18; 0.0; end
-  def g18; 0.209302325581395; end
-  def h18; 0.558139534883721; end
-  def i18; 0.906976744186046; end
-  def j18; 1.25581395348837; end
-  def k18; 1.6046511627907; end
-  def l18; 1.95348837209302; end
-  def m18; 2.30232558139535; end
-  def n18; 2.65116279069767; end
-  def o18; 3.0; end
+  def f18; 0.0199597905478588; end
+  def g18; 0.0608499164589661; end
+  def h18; 0.390031782227315; end
+  def i18; 2.5; end
+  def j18; 6.35148450938281; end
+  def k18; 16.1365421891719; end
+  def l18; 25.1141050187203; end
+  def m18; 39.0863335835693; end
+  def n18; 60.8320094173079; end
+  def o18; 94.6758887434516; end
   def c19; 4.0; end
-  def f19; 0.0; end
-  def g19; 0.418604651162791; end
-  def h19; 1.11627906976744; end
-  def i19; 1.81395348837209; end
-  def j19; 2.51162790697674; end
-  def k19; 3.2093023255814; end
-  def l19; 3.90697674418605; end
-  def m19; 4.6046511627907; end
-  def n19; 5.30232558139535; end
-  def o19; 6.0; end
+  def f19; 0.0180085487164181; end
+  def g19; 0.0965145657770533; end
+  def h19; 1.58410186231927; end
+  def i19; 26.0; end
+  def j19; 105.373530302408; end
+  def k19; 149.05450745547; end
+  def l19; 161.203630911659; end
+  def m19; 164.012992568036; end
+  def n19; 164.635504556198; end
+  def o19; 164.77214623702; end
+  def f35; 0.2; end
+  def g35; 0.2; end
+  def h35; 0.2; end
+  def i35; 0.2; end
+  def j35; 0.2; end
+  def k35; 0.2; end
+  def l35; 0.2; end
+  def m35; 0.2; end
+  def n35; 0.2; end
+  def o35; 0.2; end
   def f43; @f43 ||= index(a('f16','f19'),match(e8,a('c16','c19'),0.0)); end
   def g43; @g43 ||= index(a('g16','g19'),match(e8,a('c16','c19'),0.0)); end
   def h43; @h43 ||= index(a('h16','h19'),match(e8,a('c16','c19'),0.0)); end
@@ -56,129 +66,119 @@ class Sheet25 < Spreadsheet
   def m43; @m43 ||= index(a('m16','m19'),match(e8,a('c16','c19'),0.0)); end
   def n43; @n43 ||= index(a('n16','n19'),match(e8,a('c16','c19'),0.0)); end
   def o43; @o43 ||= index(a('o16','o19'),match(e8,a('c16','c19'),0.0)); end
-  def f44; 26042600.0; end
-  def g44; 26917400.0; end
-  def h44; 28469000.0; end
-  def i44; 30004800.0; end
-  def j44; 31434800.0; end
-  def k44; 32744800.0; end
-  def l44; 34415113.8885145; end
-  def m44; 36170630.5721648; end
-  def n44; 38015696.2497995; end
-  def o44; 39954878.8200882; end
-  def f45; @f45 ||= f43*f44; end
-  def g45; @g45 ||= g43*g44; end
-  def h45; @h45 ||= h43*h44; end
-  def i45; @i45 ||= i43*i44; end
-  def j45; @j45 ||= j43*j44; end
-  def k45; @k45 ||= k43*k44; end
-  def l45; @l45 ||= l43*l44; end
-  def m45; @m45 ||= m43*m44; end
-  def n45; @n45 ||= n43*n44; end
-  def o45; @o45 ||= o43*o44; end
-  def f47; 110.0; end
-  def g47; 110.0; end
-  def h47; 110.0; end
-  def i47; 110.0; end
-  def j47; 110.0; end
-  def k47; 110.0; end
-  def l47; 110.0; end
-  def m47; 110.0; end
-  def n47; 110.0; end
-  def o47; 110.0; end
-  def f48; @f48 ||= f45*f47*sheet8.f35*sheet8.f8; end
-  def g48; @g48 ||= g45*g47*sheet8.f35*sheet8.f8; end
-  def h48; @h48 ||= h45*h47*sheet8.f35*sheet8.f8; end
-  def i48; @i48 ||= i45*i47*sheet8.f35*sheet8.f8; end
-  def j48; @j48 ||= j45*j47*sheet8.f35*sheet8.f8; end
-  def k48; @k48 ||= k45*k47*sheet8.f35*sheet8.f8; end
-  def l48; @l48 ||= l45*l47*sheet8.f35*sheet8.f8; end
-  def m48; @m48 ||= m45*m47*sheet8.f35*sheet8.f8; end
-  def n48; @n48 ||= n45*n47*sheet8.f35*sheet8.f8; end
-  def o48; @o48 ||= o45*o47*sheet8.f35*sheet8.f8; end
-  def f49; 0.5; end
-  def g49; 0.5; end
-  def h49; 0.5; end
-  def i49; 0.5; end
-  def j49; 0.5; end
-  def k49; 0.5; end
-  def l49; 0.5; end
-  def m49; 0.5; end
-  def n49; 0.5; end
-  def o49; 0.5; end
-  def f50; @f50 ||= f48*f49; end
-  def g50; @g50 ||= g48*g49; end
-  def h50; @h50 ||= h48*h49; end
-  def i50; @i50 ||= i48*i49; end
-  def j50; @j50 ||= j48*j49; end
-  def k50; @k50 ||= k48*k49; end
-  def l50; @l50 ||= l48*l49; end
-  def m50; @m50 ||= m48*m49; end
-  def n50; @n50 ||= n48*n49; end
-  def o50; @o50 ||= o48*o49; end
-  def f52; 0.0714285714285714; end
-  def g52; 0.0714285714285714; end
-  def h52; 0.0714285714285714; end
-  def i52; 0.0714285714285714; end
-  def j52; 0.0714285714285714; end
-  def k52; 0.0714285714285714; end
-  def l52; 0.0714285714285714; end
-  def m52; 0.0714285714285714; end
-  def n52; 0.0714285714285714; end
-  def o52; 0.0714285714285714; end
-  def f53; @f53 ||= f50*f52; end
-  def g53; @g53 ||= g50*g52; end
-  def h53; @h53 ||= h50*h52; end
-  def i53; @i53 ||= i50*i52; end
-  def j53; @j53 ||= j50*j52; end
-  def k53; @k53 ||= k50*k52; end
-  def l53; @l53 ||= l50*l52; end
-  def m53; @m53 ||= m50*m52; end
-  def n53; @n53 ||= n50*n52; end
-  def o53; @o53 ||= o50*o52; end
-  def c61; "V.11"; end
-  def f61; @f61 ||= f50; end
-  def g61; @g61 ||= g50; end
-  def h61; @h61 ||= h50; end
-  def i61; @i61 ||= i50; end
-  def j61; @j61 ||= j50; end
-  def k61; @k61 ||= k50; end
-  def l61; @l61 ||= l50; end
-  def m61; @m61 ||= m50; end
-  def n61; @n61 ||= n50; end
-  def o61; @o61 ||= o50; end
-  def c62; "R.01"; end
-  def f62; @f62 ||= -f50; end
-  def g62; @g62 ||= -g50; end
-  def h62; @h62 ||= -h50; end
-  def i62; @i62 ||= -i50; end
-  def j62; @j62 ||= -j50; end
-  def k62; @k62 ||= -k50; end
-  def l62; @l62 ||= -l50; end
-  def m62; @m62 ||= -m50; end
-  def n62; @n62 ||= -n50; end
-  def o62; @o62 ||= -o50; end
-  def c63; "V.01"; end
-  def f63; @f63 ||= -f53; end
-  def g63; @g63 ||= -g53; end
-  def h63; @h63 ||= -h53; end
-  def i63; @i63 ||= -i53; end
-  def j63; @j63 ||= -j53; end
-  def k63; @k63 ||= -k53; end
-  def l63; @l63 ||= -l53; end
-  def m63; @m63 ||= -m53; end
-  def n63; @n63 ||= -n53; end
-  def o63; @o63 ||= -o53; end
-  def c64; "L.01"; end
-  def f64; @f64 ||= f53; end
-  def g64; @g64 ||= g53; end
-  def h64; @h64 ||= h53; end
-  def i64; @i64 ||= i53; end
-  def j64; @j64 ||= j53; end
-  def k64; @k64 ||= k53; end
-  def l64; @l64 ||= l53; end
-  def m64; @m64 ||= m53; end
-  def n64; @n64 ||= n53; end
-  def o64; @o64 ||= o53; end
+  def f52; @f52 ||= f43; end
+  def g52; @g52 ||= g43; end
+  def h52; @h52 ||= h43; end
+  def i52; @i52 ||= i43; end
+  def j52; @j52 ||= j43; end
+  def k52; @k52 ||= k43; end
+  def l52; @l52 ||= l43; end
+  def m52; @m52 ||= m43; end
+  def n52; @n52 ||= n43; end
+  def o52; @o52 ||= o43; end
+  def f53; 0.097; end
+  def g53; 0.097; end
+  def h53; 0.097; end
+  def i53; 0.097; end
+  def j53; 0.097; end
+  def k53; 0.097; end
+  def l53; 0.097; end
+  def m53; 0.097; end
+  def n53; 0.097; end
+  def o53; 0.097; end
+  def f54; @f54 ||= f52*f53; end
+  def g54; @g54 ||= g52*g53; end
+  def h54; @h54 ||= h52*h53; end
+  def i54; @i54 ||= i52*i53; end
+  def j54; @j54 ||= j52*j53; end
+  def k54; @k54 ||= k52*k53; end
+  def l54; @l54 ||= l52*l53; end
+  def m54; @m54 ||= m52*m53; end
+  def n54; @n54 ||= n52*n53; end
+  def o54; @o54 ||= o52*o53; end
+  def f55; @f55 ||= f54*sheet5.f5*sheet9.f37/sheet5.f3; end
+  def g55; @g55 ||= g54*sheet5.f5*sheet9.f37/sheet5.f3; end
+  def h55; @h55 ||= h54*sheet5.f5*sheet9.f37/sheet5.f3; end
+  def i55; @i55 ||= i54*sheet5.f5*sheet9.f37/sheet5.f3; end
+  def j55; @j55 ||= j54*sheet5.f5*sheet9.f37/sheet5.f3; end
+  def k55; @k55 ||= k54*sheet5.f5*sheet9.f37/sheet5.f3; end
+  def l55; @l55 ||= l54*sheet5.f5*sheet9.f37/sheet5.f3; end
+  def m55; @m55 ||= m54*sheet5.f5*sheet9.f37/sheet5.f3; end
+  def n55; @n55 ||= n54*sheet5.f5*sheet9.f37/sheet5.f3; end
+  def o55; @o55 ||= o54*sheet5.f5*sheet9.f37/sheet5.f3; end
+  def f58; @f58 ||= f54/f35; end
+  def g58; @g58 ||= g54/g35; end
+  def h58; @h58 ||= h54/h35; end
+  def i58; @i58 ||= i54/i35; end
+  def j58; @j58 ||= j54/j35; end
+  def k58; @k58 ||= k54/k35; end
+  def l58; @l58 ||= l54/l35; end
+  def m58; @m58 ||= m54/m35; end
+  def n58; @n58 ||= n54/n35; end
+  def o58; @o58 ||= o54/o35; end
+  def f59; 1.1e-07; end
+  def g59; 1.1e-07; end
+  def h59; 1.1e-07; end
+  def i59; 1.1e-07; end
+  def j59; 1.1e-07; end
+  def k59; 1.1e-07; end
+  def l59; 1.1e-07; end
+  def m59; 1.1e-07; end
+  def n59; 1.1e-07; end
+  def o59; 1.1e-07; end
+  def f60; @f60 ||= f58/f59; end
+  def g60; @g60 ||= g58/g59; end
+  def h60; @h60 ||= h58/h59; end
+  def i60; @i60 ||= i58/i59; end
+  def j60; @j60 ||= j58/j59; end
+  def k60; @k60 ||= k58/k59; end
+  def l60; @l60 ||= l58/l59; end
+  def m60; @m60 ||= m58/m59; end
+  def n60; @n60 ||= n58/n59; end
+  def o60; @o60 ||= o58/o59; end
+  def c71; "V.02"; end
+  def f71; @f71 ||= f55; end
+  def g71; @g71 ||= g55; end
+  def h71; @h71 ||= h55; end
+  def i71; @i71 ||= i55; end
+  def j71; @j71 ||= j55; end
+  def k71; @k71 ||= k55; end
+  def l71; @l71 ||= l55; end
+  def m71; @m71 ||= m55; end
+  def n71; @n71 ||= n55; end
+  def o71; @o71 ||= o55; end
+  def c72; "R.01"; end
+  def f72; @f72 ||= -f55; end
+  def g72; @g72 ||= -g55; end
+  def h72; @h72 ||= -h55; end
+  def i72; @i72 ||= -i55; end
+  def j72; @j72 ||= -j55; end
+  def k72; @k72 ||= -k55; end
+  def l72; @l72 ||= -l55; end
+  def m72; @m72 ||= -m55; end
+  def n72; @n72 ||= -n55; end
+  def o72; @o72 ||= -o55; end
+  def c81; "B.01"; end
+  def f81; @f81 ||= f60*sheet9.f49; end
+  def g81; @g81 ||= g60*sheet9.f49; end
+  def h81; @h81 ||= h60*sheet9.f49; end
+  def i81; @i81 ||= i60*sheet9.f49; end
+  def j81; @j81 ||= j60*sheet9.f49; end
+  def k81; @k81 ||= k60*sheet9.f49; end
+  def l81; @l81 ||= l60*sheet9.f49; end
+  def m81; @m81 ||= m60*sheet9.f49; end
+  def n81; @n81 ||= n60*sheet9.f49; end
+  def o81; @o81 ||= o60*sheet9.f49; end
+  def c82; "B.02"; end
+  def f82; @f82 ||= f43; end
+  def g82; @g82 ||= g43; end
+  def h82; @h82 ||= h43; end
+  def i82; @i82 ||= i43; end
+  def j82; @j82 ||= j43; end
+  def k82; @k82 ||= k43; end
+  def l82; @l82 ||= l43; end
+  def m82; @m82 ||= m43; end
+  def n82; @n82 ||= n43; end
+  def o82; @o82 ||= o43; end
 end
 

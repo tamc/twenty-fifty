@@ -1,0 +1,30 @@
+var primary_energy_chart = new Highcharts.Chart({ 
+  chart: { renderTo: 'supply_chart' }, 
+  title: { text: 'UK electricity supply' },
+  subtitle: { text: "TWh/yr of electricity"},
+  yAxis: { title: null, min: 0, max: 4000 },
+  series: <%= electricity_supply_chart_data.to_json %>
+});
+
+var final_energy_chart = new Highcharts.Chart({
+  chart: { renderTo: 'demand_chart' }, 
+  title: { text: 'UK electricity demand' }, 
+  subtitle: { text: "TWh/yr of electricity"},
+  yAxis: { title: null, min: 0, max: 4000 },
+  series: <%= electricity_demand_chart_data.to_json %>
+});
+
+var emissions_chart = new Highcharts.Chart({
+  chart: { renderTo: 'emissions_chart' }, 
+  title: { text: 'UK greenhouse gas emissions from electricity' },
+  subtitle: { text: "MtCO<sub>2</sub>e/yr"},   
+  yAxis: { title: null, min: -500, max: 1000 },
+  series: <%= electricity_emissions_chart_data.to_json %>,
+  tooltip: {
+    formatter: function() {
+      return '<b>'+ this.series.name +'</b><br/>'+
+      this.x +': '+ Highcharts.numberFormat(this.y, 0, ',') +' MtCO2e/yr';
+    }
+  }
+});
+

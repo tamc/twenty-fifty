@@ -1,0 +1,34 @@
+%script{ :type => 'text/javascript' }
+  $(document).ready(function() {
+  /= scroll_to_last_position
+  = render 'sankey.js.erb'
+  })
+
+/ #sdata= @pathway.sankey_data
+
+#sankey
+  &nbsp;
+  
+  
+#demand
+  = render "demand_choices"
+
+#supply
+  = render "supply_choices"
+  
+#ghg
+
+  = render "ghg_choices"
+  = render 'ghg_results'
+
+  #keydata
+    %h2 Energy security
+
+    %table.choice_bars.detail#security_detail
+      = choice_bars @pathway.security_row
+
+    = render "security_results"
+
+      
+.clear
+

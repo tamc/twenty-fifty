@@ -1,0 +1,444 @@
+body
+  font-family: Arial, sans-serif
+  font-size: 100%
+  font-style: normal
+  color: #222
+  margin: 0
+  padding: 0
+  background-color: #fff
+  
+body.document
+  margin: 5%
+
+#container
+  position: relative
+  z-index: 0
+  width: 100%
+  font-size: 0.875em
+
+#demand, #supply, #ghg
+  position: absolute
+  width: 30%
+  
+  table
+    width: 92%
+    margin-right: 4%
+    margin-left: 4%
+
+#demand
+  left: 1%
+  
+#supply
+  left: 35%
+
+#ghg
+  left: 70%
+  
+  .ghg_label, .security_label
+    text-align: center
+    font-size: 0.72em
+    width: 92%
+    margin-right: 4%
+    margin-left: 4%    
+
+.chart
+  width: 100%
+  height: 380px
+
+  .loading
+    text-align: center
+    padding-top: 170px
+
+  #pathwayPollingCounter
+    text-align: center
+
+.warning
+  background-color: red
+  border: solid 3px #000
+  color: white
+
+#disclaimer
+  position: relative
+  width: 100%
+  padding-top: 3px
+  padding-bottom: 3px
+  text-align: center
+  background-color: #0066a1
+  text-weight: bold
+  color: white
+  
+  a
+    color: white
+    text-decoration: none
+    
+  a:hover
+    text-decoration: underline
+
+  #help, #share
+    display: inline
+    padding-right: 3px
+    padding-left: 3px
+  
+  #help
+    position: absolute
+    left: 3px
+    
+    .links
+      position: relative
+      bottom: 3px
+      
+      a
+        padding-left: 3px
+  
+  #share
+    position: absolute
+    right: 3px
+
+#keydata
+  margin-top: 50px
+
+  h2
+    text-align: center
+    color: rgb(62, 87, 111)
+    font: normal normal normal 16px/normal 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif
+  
+  h3
+    text-align: center
+    font-size: 0.72em
+  
+  p
+    font-size: 0.72em
+    width: 92%
+    margin-right: 4%
+    margin-left: 4%
+    
+  table.key_facts
+    font-size: 0.72em
+    width: 92%
+  
+    td.description
+      text-align: left
+      width: 40%
+  
+    td.value
+      text-align: right
+      width: 10%
+    
+    td.target
+      text-align: left
+      width: 50%
+
+table.choice_bars
+  width: 100%
+        
+  td.description
+    font-size: 0.72em
+
+    a
+      text-decoration: none
+      color: black
+
+    a:hover
+      text-decoration: underline
+
+  td.choicebar
+    width: 20px
+    margin: 0
+    padding: 0
+    border: solid 1px 
+    border-color: #CCC
+    font-size: 0.72em
+    text-align: center
+
+  td.expand_options
+    font-size: 0.72em
+    text-align: center
+  
+  td.choicebar.hover
+    border-color: #000
+    cursor: pointer
+    color: #000
+  
+  td.control
+    font-size: 0.72em
+    width: 10px
+  
+    a
+      color: black
+      text-decoration: none
+
+
+  td.left
+    text-align: right
+
+  td.full
+    border-color: #AAA
+    text-color: #FFF
+
+  td.empty
+    background-color: white 
+    color: #AAA
+  
+  td.greyed
+    color: #AAA
+
+  td.detail
+    color: #AAA
+
+.pathways
+  tr.choice1
+    td.full
+      background-color: #0F0
+
+  tr.choice2
+    td.full
+      background-color: yellow
+
+  tr.choice3
+    td.full
+      background-color: orange
+
+  tr.choice4
+    td.full
+      background-color: red
+
+  tr.abcd
+    td.full
+      background-color: #aaa  
+
+
+.sectors
+  tr.selected_choice
+
+    td.description
+      font-weight: bold
+      background-color: #AA4643
+      
+      a
+        color: white
+
+    td.control, td.control a
+      color: #AA4643
+      
+    td.choice1
+      background-color: #0F0
+    
+    td.choice2
+      background-color: yellow
+
+    td.choice3
+      background-color: orange
+
+    td.choice4
+      background-color: red      
+
+  tr.choice1, tr.choice2, tr.choice3, tr.choice4
+    td.full
+      background-color: #AAA
+
+
+#consequences div
+  float: left
+  
+.clear
+  clear: both
+
+.big
+  font-weight: bold
+
+.tooltip
+  display: none
+
+  background-color: #FFFF00
+  color: #000
+
+  border: 2px solid #000
+  border-radius: 15px 15px 0px 15px
+  -moz-border-radius: 15px 15px 0px 15px
+
+  font-size: 12px
+
+  height: 5em
+  width: 14em
+  padding: 15px
+
+  z-index: 10000
+
+.full_details_on_choice
+  width: 300px
+  margin: 0 50px
+  font-size: 10px
+
+.overall_target
+  width: 100%
+  margin-top: 4px
+  margin-bottom: 4px
+  text-align: center
+  font-size: 10px
+  font-weight: bold
+  
+.failed
+  color: red
+
+.hit
+  color: green
+
+.reveal
+  width: 100%
+  text-align: center
+  font-size: 8px
+  a
+    text-decoration: none
+
+  a:hover
+    text-decoration: underline
+    
+.question
+  color: blue
+  
+.question:hover
+  text-decoration: underline
+  cursor: pointer
+
+.media
+  float: right
+  border: 1px solid #000
+  margin-left: 10px
+  margin-bottom: 10px
+
+.level_description
+  margin-bottom: 0.7em
+  
+h1.sankeytitle, h1.maptitle
+  font-size: 12px
+  margin-left: 100px
+  
+  a
+    margin-left: 10px
+    font-size: 10px
+  
+#sankey
+  width: 100%
+
+#header
+  border-bottom: 2px solid #fff
+
+#message
+  width: 100%
+  text-align: center
+  background: #ff0
+  
+.title
+  text-align: center
+  color: rgb(62, 87, 111)
+  font: normal normal normal 16px/normal 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif
+
+#saved_pathways
+  position: absolute
+  right: 166px
+  top: 2px
+
+#help
+  position: absolute
+  right: 2px
+  top: 2px
+
+#help li, #saved_pathways li
+  width: 160px
+
+.dropdown, .dropdown *
+  z-index: 2000
+
+ul.dropdown
+  list-style: none
+  font-weight: bold
+  margin: 0
+  margin-top: 1px
+  padding: 0
+  li
+    a
+      display: block
+      padding: 3px
+      padding-left: 5px
+      color: #fff
+      background: #109748
+      border: 1px solid #aaa
+      text-decoration: none
+      -moz-border-radius: 6px
+      -webkit-border-radius: 6px
+      border-radius: 6px
+      &:hover
+        background-color: #F7F7F7
+        color: #333
+  ul
+    list-style: none
+    padding: 0
+    margin: 0
+    display: none
+    li
+      display: inline
+      padding: 0
+      margin: 0
+    a
+      display: block
+      width: 148px
+      margin: 0
+      padding: 5px
+      -moz-border-radius: 0px
+      -webkit-border-radius: 0px
+      border-radius: 0px
+      background: #109748
+      border: none
+ 
+ul.css-tabs
+  margin: 0 !important
+  padding: 0
+  height: 30px
+  border-bottom: 1px solid #666
+  background: #1396E4
+  li
+    float: left
+    padding: 0
+    margin: 0
+    list-style-type: none
+  a
+    float: left
+    font-size: 13px
+    font-weight: bold
+    display: block
+    padding: 5px 30px
+    text-decoration: none
+    border: 1px solid #666
+    border-bottom: 0px
+    height: 18px
+    background-color: #A81933
+    color: #fff
+    margin-left: 2px
+    position: relative
+    top: 1px
+    outline: 0
+    -moz-border-radius: 6px 6px 0 0
+    -webkit-border-radius: 6px 6px 0 0
+    &:hover
+      background-color: #F7F7F7
+      color: #333
+    &.current
+      background-color: #fff !important
+      border-bottom: 1px solid #fff
+      color: #000
+      cursor: default
+      
+.story
+  width: 92%
+  margin-right: 4%
+  margin-left: 4%
+  height: 500px
+  font-size: 0.72em
+  
+  h4
+    
+#header, #message, td.one_page_link
+  display: none
+  
+.chart
+  border: none

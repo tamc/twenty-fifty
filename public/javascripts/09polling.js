@@ -7,7 +7,7 @@ function pollAndReload(url) {
     pathwayPollingCounter++; 
   },1000);
   var pathwayPollingTimer = setInterval(function() {
-    $.getJSON(url,function(data) {
+    $.getJSON(url+'?' + Math.round(new Date().getTime()),function(data) {
       if(data) {
         clearInterval(pathwayPollingTimer);
         clearInterval(pathwayPollingUpdateTimer);

@@ -1,9 +1,0 @@
-%h3 Some of the consequences of this pathway
-
-%table.key_facts
-  - percentage = [0,1,2,6,7,8]
-  - @pathway.key_facts.each_with_index do |fact,i|
-    %tr
-      %td.description= fact[0]
-      %td.value= percentage.include?(i) ? (fact[1].to_f * 100).round.to_s + "%" :  fact[1].round
-      %td.target= fact[2]

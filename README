@@ -2,16 +2,14 @@ DECC 2050 CALCULATOR TOOL
 A web interface to the www.decc.gov.uk 2050 energy and climate change calculator
 
 Further detail on the project:
-http://www.decc.gov.uk/en/content/cms/what_we_do/lc_uk/2050/2050.aspx
+http://www.decc.gov.uk/2050
 
 DEPENDENCIES
-ruby 1.9.1 (including development headers)
+ruby 1.9.2 (including development headers)
 sqlite3 (including development headers)
 
 INSTALATION
-On ubuntu 10.04:
-sh ./bootstrap_on_ubuntu.sh
-...should install the required dependencies and start the server.
+Read bootstraph.sh to get a sense the dependencies and how to install them.
 
 Otherwise:
 1. Install the dependencies

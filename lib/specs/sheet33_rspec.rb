@@ -1,247 +1,291 @@
 # coding: utf-8
 require_relative '../spreadsheet'
-# VII.b
-describe Sheet33 do
+# VII.a
+describe 'Sheet33' do
   def sheet33; $spreadsheet ||= Spreadsheet.new; $spreadsheet.sheet33; end
 
-  it 'cell f9 should equal -354.55512401053' do
-    sheet33.f9.should be_close(-354.55512401053,35.455512401053)
+  it 'cell e7 should equal 1.0' do
+    sheet33.e7.should be_within(0.1).of(1.0)
   end
 
-  it 'cell g9 should equal -361.169317007911' do
-    sheet33.g9.should be_close(-361.169317007911,36.1169317007911)
+  it 'cell f48 should equal 5.21452425' do
+    sheet33.f48.should be_within(0.521452425).of(5.21452425)
   end
 
-  it 'cell h9 should equal -373.164950410837' do
-    sheet33.h9.should be_close(-373.164950410837,37.3164950410837)
+  it 'cell g48 should equal 0.0' do
+    sheet33.g48.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell i9 should equal -382.284497166256' do
-    sheet33.i9.should be_close(-382.284497166256,38.2284497166256)
+  it 'cell h48 should equal 0.0' do
+    sheet33.h48.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell j9 should equal -389.725893260685' do
-    sheet33.j9.should be_close(-389.725893260685,38.9725893260685)
+  it 'cell i48 should equal 0.0' do
+    sheet33.i48.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell k9 should equal -398.925906194217' do
-    sheet33.k9.should be_close(-398.925906194217,39.8925906194217)
+  it 'cell j48 should equal 0.0' do
+    sheet33.j48.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell l9 should equal -409.731173532017' do
-    sheet33.l9.should be_close(-409.731173532017,40.9731173532017)
+  it 'cell k48 should equal 0.0' do
+    sheet33.k48.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell m9 should equal -422.110569990388' do
-    sheet33.m9.should be_close(-422.110569990388,42.2110569990388)
+  it 'cell l48 should equal 0.0' do
+    sheet33.l48.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell n9 should equal -435.714863021093' do
-    sheet33.n9.should be_close(-435.714863021093,43.5714863021093)
+  it 'cell m48 should equal 0.0' do
+    sheet33.m48.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell o9 should equal -450.966332106454' do
-    sheet33.o9.should be_close(-450.966332106454,45.0966332106454)
+  it 'cell n48 should equal 0.0' do
+    sheet33.n48.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell f25 should equal 354.55512401053' do
-    sheet33.f25.should be_close(354.55512401053,35.455512401053)
+  it 'cell o48 should equal 0.0' do
+    sheet33.o48.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell g25 should equal 361.169317007911' do
-    sheet33.g25.should be_close(361.169317007911,36.1169317007911)
+  it 'cell f51 should equal 0.7366661157059818' do
+    sheet33.f51.should be_within(0.07366661157059819).of(0.7366661157059818)
   end
 
-  it 'cell h25 should equal 373.164950410837' do
-    sheet33.h25.should be_close(373.164950410837,37.3164950410837)
+  it 'cell g51 should equal 0.0' do
+    sheet33.g51.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell i25 should equal 382.284497166256' do
-    sheet33.i25.should be_close(382.284497166256,38.2284497166256)
+  it 'cell h51 should equal 0.0' do
+    sheet33.h51.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell j25 should equal 389.725893260685' do
-    sheet33.j25.should be_close(389.725893260685,38.9725893260685)
+  it 'cell i51 should equal 0.0' do
+    sheet33.i51.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell k25 should equal 398.925906194217' do
-    sheet33.k25.should be_close(398.925906194217,39.8925906194217)
+  it 'cell j51 should equal 0.0' do
+    sheet33.j51.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell l25 should equal 409.731173532017' do
-    sheet33.l25.should be_close(409.731173532017,40.9731173532017)
+  it 'cell k51 should equal 0.0' do
+    sheet33.k51.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell m25 should equal 422.110569990388' do
-    sheet33.m25.should be_close(422.110569990388,42.2110569990388)
+  it 'cell l51 should equal 0.0' do
+    sheet33.l51.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell n25 should equal 435.714863021093' do
-    sheet33.n25.should be_close(435.714863021093,43.5714863021093)
+  it 'cell m51 should equal 0.0' do
+    sheet33.m51.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell o25 should equal 450.966332106454' do
-    sheet33.o25.should be_close(450.966332106454,45.0966332106454)
+  it 'cell n51 should equal 0.0' do
+    sheet33.n51.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell f27 should equal 381.139605650166' do
-    sheet33.f27.should be_close(381.139605650166,38.1139605650166)
+  it 'cell o51 should equal 0.0' do
+    sheet33.o51.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell g27 should equal 388.249729690119' do
-    sheet33.g27.should be_close(388.249729690119,38.8249729690119)
+  it 'cell f52 should equal 46.65552066137885' do
+    sheet33.f52.should be_within(4.665552066137885).of(46.65552066137885)
   end
 
-  it 'cell h27 should equal 401.144793602887' do
-    sheet33.h27.should be_close(401.144793602887,40.1144793602887)
+  it 'cell g52 should equal 0.0' do
+    sheet33.g52.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell i27 should equal 410.948122390671' do
-    sheet33.i27.should be_close(410.948122390671,41.0948122390671)
+  it 'cell h52 should equal 0.0' do
+    sheet33.h52.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell j27 should equal 418.947473072268' do
-    sheet33.j27.should be_close(418.947473072268,41.8947473072268)
+  it 'cell i52 should equal 0.0' do
+    sheet33.i52.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell k27 should equal 428.837301378229' do
-    sheet33.k27.should be_close(428.837301378229,42.8837301378229)
+  it 'cell j52 should equal 0.0' do
+    sheet33.j52.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell l27 should equal 440.452745784982' do
-    sheet33.l27.should be_close(440.452745784982,44.0452745784982)
+  it 'cell k52 should equal 0.0' do
+    sheet33.k52.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell m27 should equal 453.760347240462' do
-    sheet33.m27.should be_close(453.760347240462,45.3760347240462)
+  it 'cell l52 should equal 0.0' do
+    sheet33.l52.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell n27 should equal 468.384687800601' do
-    sheet33.n27.should be_close(468.384687800601,46.8384687800601)
+  it 'cell m52 should equal 0.0' do
+    sheet33.m52.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell o27 should equal 484.779709389988' do
-    sheet33.o27.should be_close(484.779709389988,48.4779709389988)
+  it 'cell n52 should equal 0.0' do
+    sheet33.n52.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell f29 should equal 26.5844816396359' do
-    sheet33.f29.should be_close(26.5844816396359,2.65844816396359)
+  it 'cell o52 should equal 0.0' do
+    sheet33.o52.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell g29 should equal 27.0804126822081' do
-    sheet33.g29.should be_close(27.0804126822081,2.70804126822081)
+  it 'cell f59 should equal 5.21452425' do
+    sheet33.f59.should be_within(0.521452425).of(5.21452425)
   end
 
-  it 'cell h29 should equal 27.9798431920501' do
-    sheet33.h29.should be_close(27.9798431920501,2.79798431920501)
+  it 'cell g59 should equal 0.0' do
+    sheet33.g59.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell i29 should equal 28.6636252244149' do
-    sheet33.i29.should be_close(28.6636252244149,2.86636252244149)
+  it 'cell h59 should equal 0.0' do
+    sheet33.h59.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell j29 should equal 29.2215798115829' do
-    sheet33.j29.should be_close(29.2215798115829,2.92215798115829)
+  it 'cell i59 should equal 0.0' do
+    sheet33.i59.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell k29 should equal 29.9113951840118' do
-    sheet33.k29.should be_close(29.9113951840118,2.99113951840118)
+  it 'cell j59 should equal 0.0' do
+    sheet33.j59.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell l29 should equal 30.7215722529648' do
-    sheet33.l29.should be_close(30.7215722529648,3.07215722529648)
+  it 'cell k59 should equal 0.0' do
+    sheet33.k59.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell m29 should equal 31.6497772500742' do
-    sheet33.m29.should be_close(31.6497772500742,3.16497772500742)
+  it 'cell l59 should equal 0.0' do
+    sheet33.l59.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell n29 should equal 32.6698247795079' do
-    sheet33.n29.should be_close(32.6698247795079,3.26698247795079)
+  it 'cell m59 should equal 0.0' do
+    sheet33.m59.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell o29 should equal 33.8133772835333' do
-    sheet33.o29.should be_close(33.8133772835333,3.38133772835333)
+  it 'cell n59 should equal 0.0' do
+    sheet33.n59.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell f38 should equal -26.5844816396359' do
-    sheet33.f38.should be_close(-26.5844816396359,2.65844816396359)
+  it 'cell o59 should equal 0.0' do
+    sheet33.o59.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell g38 should equal -27.0804126822081' do
-    sheet33.g38.should be_close(-27.0804126822081,2.70804126822081)
+  it 'cell f60 should equal -5.21452425' do
+    sheet33.f60.should be_within(0.521452425).of(-5.21452425)
   end
 
-  it 'cell h38 should equal -27.9798431920502' do
-    sheet33.h38.should be_close(-27.9798431920502,2.79798431920502)
+  it 'cell g60 should equal 0.0' do
+    sheet33.g60.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell i38 should equal -28.6636252244149' do
-    sheet33.i38.should be_close(-28.6636252244149,2.86636252244149)
+  it 'cell h60 should equal 0.0' do
+    sheet33.h60.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell j38 should equal -29.2215798115829' do
-    sheet33.j38.should be_close(-29.2215798115829,2.92215798115829)
+  it 'cell i60 should equal 0.0' do
+    sheet33.i60.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell k38 should equal -29.9113951840118' do
-    sheet33.k38.should be_close(-29.9113951840118,2.99113951840118)
+  it 'cell j60 should equal 0.0' do
+    sheet33.j60.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell l38 should equal -30.7215722529648' do
-    sheet33.l38.should be_close(-30.7215722529648,3.07215722529648)
+  it 'cell k60 should equal 0.0' do
+    sheet33.k60.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell m38 should equal -31.6497772500742' do
-    sheet33.m38.should be_close(-31.6497772500742,3.16497772500742)
+  it 'cell l60 should equal 0.0' do
+    sheet33.l60.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell n38 should equal -32.669824779508' do
-    sheet33.n38.should be_close(-32.669824779508,3.2669824779508)
+  it 'cell m60 should equal 0.0' do
+    sheet33.m60.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell o38 should equal -33.8133772835333' do
-    sheet33.o38.should be_close(-33.8133772835333,3.38133772835333)
+  it 'cell n60 should equal 0.0' do
+    sheet33.n60.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell f39 should equal 26.5844816396359' do
-    sheet33.f39.should be_close(26.5844816396359,2.65844816396359)
+  it 'cell o60 should equal 0.0' do
+    sheet33.o60.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell g39 should equal 27.0804126822081' do
-    sheet33.g39.should be_close(27.0804126822081,2.70804126822081)
+  it 'cell f69 should equal 46.65552066137885' do
+    sheet33.f69.should be_within(4.665552066137885).of(46.65552066137885)
   end
 
-  it 'cell h39 should equal 27.9798431920501' do
-    sheet33.h39.should be_close(27.9798431920501,2.79798431920501)
+  it 'cell g69 should equal 0.0' do
+    sheet33.g69.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell i39 should equal 28.6636252244149' do
-    sheet33.i39.should be_close(28.6636252244149,2.86636252244149)
+  it 'cell h69 should equal 0.0' do
+    sheet33.h69.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell j39 should equal 29.2215798115829' do
-    sheet33.j39.should be_close(29.2215798115829,2.92215798115829)
+  it 'cell i69 should equal 0.0' do
+    sheet33.i69.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell k39 should equal 29.9113951840118' do
-    sheet33.k39.should be_close(29.9113951840118,2.99113951840118)
+  it 'cell j69 should equal 0.0' do
+    sheet33.j69.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell l39 should equal 30.7215722529648' do
-    sheet33.l39.should be_close(30.7215722529648,3.07215722529648)
+  it 'cell k69 should equal 0.0' do
+    sheet33.k69.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell m39 should equal 31.6497772500742' do
-    sheet33.m39.should be_close(31.6497772500742,3.16497772500742)
+  it 'cell l69 should equal 0.0' do
+    sheet33.l69.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell n39 should equal 32.6698247795079' do
-    sheet33.n39.should be_close(32.6698247795079,3.26698247795079)
+  it 'cell m69 should equal 0.0' do
+    sheet33.m69.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell o39 should equal 33.8133772835333' do
-    sheet33.o39.should be_close(33.8133772835333,3.38133772835333)
+  it 'cell n69 should equal 0.0' do
+    sheet33.n69.should be_within(1.0e-08).of(0.0)
+  end
+
+  it 'cell o69 should equal 0.0' do
+    sheet33.o69.should be_within(1.0e-08).of(0.0)
+  end
+
+  it 'cell f70 should equal 0.7366661157059818' do
+    sheet33.f70.should be_within(0.07366661157059819).of(0.7366661157059818)
+  end
+
+  it 'cell g70 should equal 0.0' do
+    sheet33.g70.should be_within(1.0e-08).of(0.0)
+  end
+
+  it 'cell h70 should equal 0.0' do
+    sheet33.h70.should be_within(1.0e-08).of(0.0)
+  end
+
+  it 'cell i70 should equal 0.0' do
+    sheet33.i70.should be_within(1.0e-08).of(0.0)
+  end
+
+  it 'cell j70 should equal 0.0' do
+    sheet33.j70.should be_within(1.0e-08).of(0.0)
+  end
+
+  it 'cell k70 should equal 0.0' do
+    sheet33.k70.should be_within(1.0e-08).of(0.0)
+  end
+
+  it 'cell l70 should equal 0.0' do
+    sheet33.l70.should be_within(1.0e-08).of(0.0)
+  end
+
+  it 'cell m70 should equal 0.0' do
+    sheet33.m70.should be_within(1.0e-08).of(0.0)
+  end
+
+  it 'cell n70 should equal 0.0' do
+    sheet33.n70.should be_within(1.0e-08).of(0.0)
+  end
+
+  it 'cell o70 should equal 0.0' do
+    sheet33.o70.should be_within(1.0e-08).of(0.0)
   end
 
 end

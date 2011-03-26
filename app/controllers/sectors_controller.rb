@@ -19,8 +19,7 @@ class SectorsController < ApplicationController
     flash.keep
     @pathway = case params[:pathway_id]
     when nil; Pathway.default
-    when /[A-Za-z]/; Pathway.pathway(params[:id])
-    else;          Pathway.find_or_create_by_code(params[:pathway_id])
+    else;     Pathway.find_or_create_by_code(params[:pathway_id])
     end
     @code = @pathway.code    
     @choice = params[:id].to_i

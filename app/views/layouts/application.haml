@@ -4,16 +4,41 @@
     %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
     = other_meta_data
     %title 2050 pathway
-    = stylesheet_link_tag :all, :cache => true
+    = stylesheet_link_tag "application"
+    = stylesheet_link_tag "print", :media => 'print'
     = javascript_include_tag :all, :cache => true
+    = render 'layouts/google.html'    
   %body{ :class => controller.controller_name}
     #container
-      #disclaimer
+      #header
+        %ul#views.css-tabs
+          %li= link_to "All energy", primary_energy_chart_pathway_url(:id => @code), :class => action_name == "primary_energy_chart" && "current"
+          %li= link_to "Electricity", pathway_url(:id => @code), :class => action_name == "show" && "current"
+          %li= link_to "Flows", sankey_pathway_url(:id => @code), :class => action_name == "sankey" && "current"
+          %li= link_to "Area", map_pathway_url(:id => @code), :class => action_name == "map" && "current"
+          %li= link_to "Story", story_pathway_url(:id => @code), :class => action_name == "story" && "current"
+        
+        %ul#saved_pathways.dropdown
+          %li 
+            = link_to "Example pathways", pathways_url
+            %ul 
+              - @pathway.saved_pathways[0...3].each do |saved_pathway|
+                - next if saved_pathway.first == 0.0
+                %li.failed= link_to(saved_pathway.first,url_for(:id => saved_pathway.last))
+              - @pathway.saved_pathways[3..-1].each do |saved_pathway|
+                - next if saved_pathway.first == 0.0
+                %li= link_to(saved_pathway.first,url_for(:id => saved_pathway.last))
+              = render '/layouts/debate_pathways'
+              
         #help
-          = link_to image_tag("help.gif", :border=>0, :alt => "help"), help_document_url
-          %span.links= %w{r a b c d e f}.map { |code| link_to(code,primary_energy_chart_pathway_url(code)) }.join
-        #share= render 'layouts/add_this.html'
-        %span#note
-          This tool uses the assumptions in the DECC 2050 Calculator-1.0.7-20July2010.
-          = link_to 'Help us to improve it.', make_it_better_document_url
-      = yield
+          = link_to "Help", 'http://www.decc.gov.uk/2050'
+
+        #message
+          - unless @pathway.message.empty?
+            %span= @pathway.message
+          - else
+            &nbsp;
+
+      #content= yield
+      = render '/layouts/share'
+        

@@ -2,7 +2,15 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  
+  # before_filter :authenticate
 
+  def authenticate
+    authenticate_or_request_with_http_basic do |user_name, password|
+      user_name.downcase == "xxxx" && password.downcase == "xxxx"
+    end
+  end
+  
   @@time_of_last_update = Time.now
   cattr_accessor :time_of_last_update
 

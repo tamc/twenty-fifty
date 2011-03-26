@@ -1,1 +1,5 @@
 _darcs/
+vendor/gems/rubyfromexcel-0.0.4/examples/
+lib/specs/
+lib/unzipped-model
+lib/work-in-progress

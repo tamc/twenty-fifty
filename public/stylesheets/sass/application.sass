@@ -10,6 +10,8 @@ body.document
   margin: 5%
 
 #container
+  position: relative
+  z-index: 0
   width: 100%
   font-size: 0.875em
 
@@ -17,23 +19,38 @@ body.document
   position: absolute
   width: 30%
   
-  table
+  table, p
     width: 92%
-    margin-right: 4%
-    margin-left: 4%
-
+    margin-right: 2%
+    margin-left: 6%
+  
+  p.note
+    font-size: 0.72em
+    
 #demand
-  left: 1%
+  left: 0%
   
 #supply
   left: 35%
 
 #ghg
   left: 70%
+  
+  .ghg_label, .security_label
+    text-align: left
+    font-size: 0.72em
+    width: 90%
+    margin-right: 10%
+    margin-left: 7%
+    
+  p.note
+    margin-left: 7%
+    width: 90%
 
 .chart
   width: 100%
-  height: 380px
+  height: 300px
+  margin-bottom: 15px
 
   .loading
     text-align: center
@@ -84,34 +101,11 @@ body.document
     position: absolute
     right: 3px
 
-.switch
-  position: absolute
-  width: 100%
-  text-align: center
-  top: 30px
-  z-index: 2000
-  font-size: 0.72em
-  
-  a
-    text-decoration: none
-
-  a:hover
-    text-decoration: underline
-
-.switch
-  width: 100%
-
-.noswitch
-  width: 5em
-
-table#demand_detail
-  margin-top: 10px
-
-table#supply_detail
-  margin-top: 10px
-
-#keydata
-  margin-top: 50px
+#ghg
+  h2
+    text-align: center
+    color: rgb(62, 87, 111)
+    font: normal normal normal 16px/normal 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif
   
   h3
     text-align: center
@@ -123,32 +117,31 @@ table#supply_detail
     margin-right: 4%
     margin-left: 4%
     
-  table.key_facts
-    font-size: 0.72em
-    width: 92%
+table.comparison
+  font-size: 0.72em
+  width: 92%
   
-    td.description
-      text-align: left
-      width: 40%
+  th
+    font-weight: normal
+    font-size: 100%
+    text-align: center
   
-    td.value
-      text-align: right
-      width: 10%
-    
-    td.target
-      text-align: left
-      width: 50%
+  td
+    text-align: center
 
 table.choice_bars
   width: 100%
+  border-spacing: 1px
         
   td.description
     font-size: 0.72em
-    border: solid 1px #FFF
-    border-bottom: dotted 1px #CCC
-
+    background-image: url('../images/onegreypixel.png')
+    background-position: left center    
+    background-repeat: repeat-x
+    
     a
       text-decoration: none
+      background-color: white
       color: black
 
     a:hover
@@ -164,7 +157,7 @@ table.choice_bars
     text-align: center
 
   td.expand_options
-    font-size: 0.72em
+    font-size: 0.72em 
     text-align: center
   
   td.choicebar.hover
@@ -173,6 +166,7 @@ table.choice_bars
     color: #000
   
   td.control
+    font-size: 0.72em
     width: 10px
   
     a
@@ -214,6 +208,10 @@ table.choice_bars
     td.full
       background-color: red
 
+  tr.abcd
+    td.full
+      background-color: #aaa  
+
 
 .sectors
   tr.selected_choice
@@ -223,6 +221,7 @@ table.choice_bars
       background-color: #AA4643
       
       a
+        background-color: #AA4643
         color: white
 
     td.control, td.control a
@@ -263,12 +262,14 @@ table.choice_bars
   border: 2px solid #000
   border-radius: 15px 15px 0px 15px
   -moz-border-radius: 15px 15px 0px 15px
+  -moz-box-shadow: 0 0 5px #888
+  -webkit-box-shadow: 0 0 5px#888
 
   font-size: 12px
 
   height: 5em
   width: 14em
-  padding: 15px
+  padding: 10px
 
   z-index: 10000
 
@@ -316,3 +317,336 @@ table.choice_bars
 
 .level_description
   margin-bottom: 0.7em
+  
+h1.sankeytitle, h1.maptitle
+  font-size: 12px
+  margin-left: 100px
+  
+  a
+    margin-left: 10px
+    font-size: 10px
+  
+#sankey
+  width: 100%
+
+#header
+  border-bottom: 2px solid #fff
+
+#message
+  width: 100%
+  text-align: center
+  margin-top: 5px
+  
+  span
+    padding-left: 5px
+    padding-right: 5px
+    background: #ff0
+  
+.title
+  text-align: center
+  color: rgb(62, 87, 111)
+  font: normal normal normal 16px/normal 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif
+
+#saved_pathways
+  position: absolute
+  right: 73px
+  top: 2px
+  
+  li.debate a
+    background: rgb(0, 176, 240)
+
+    &:hover
+      background-color: #F7F7F7
+      color: #333
+  
+  li.failed a
+    background: red
+
+    &:hover
+      background-color: #F7F7F7
+      color: #333
+      
+#help
+  position: absolute
+  right: 10px
+  top: 2px
+  font-weight: bold
+  margin: 0
+  margin-top: 1px
+  padding: 0
+  a
+    display: block
+    padding: 3px
+    padding-left: 10px
+    padding-right: 10px
+    color: #fff
+    background: rgb(0, 176, 240)
+    border: 1px solid rgb(240,240,240)
+    text-decoration: none
+    &:hover
+      background-color: #F7F7F7
+      color: #333
+      text-decoration: underline
+  
+
+#help li, #saved_pathways li, #debate_pathways li
+  width: 160px
+
+.dropdown, .dropdown *
+  z-index: 2000
+
+ul.dropdown
+  list-style: none
+  font-weight: bold
+  margin: 0
+  margin-top: 1px
+  padding: 0
+  li
+    a
+      display: block
+      padding: 3px
+      padding-left: 5px
+      color: #fff
+      background: rgb(0, 176, 240)
+      border: 1px solid rgb(240,240,240)
+      text-decoration: none
+      &:hover
+        background-color: #F7F7F7
+        color: #333
+        text-decoration: underline
+  ul
+    border: 1px solid rgb(240,240,240)
+    -moz-box-shadow: 0 0 5px #888
+    -webkit-box-shadow: 0 0 5px#888
+    box-shadow: 0 0 5px #888 
+    list-style: none
+    padding: 0
+    margin: 0
+    display: none
+    li
+      display: inline
+      padding: 0
+      margin: 0
+    a
+      display: block
+      width: 148px
+      margin: 0
+      padding: 5px
+      font-weight: normal
+      font-size: 0.72em
+      -moz-border-radius: 0px
+      -webkit-border-radius: 0px
+      border-radius: 0px
+      background: #109748
+      border: none
+ 
+ul.css-tabs
+  margin: 0 !important
+  padding: 0
+  height: 30px
+  border-bottom: 1px solid #666
+  background: rgb(202,202,202)
+  li
+    float: left
+    padding: 0
+    margin: 0
+    list-style-type: none
+  a
+    float: left
+    font-size: 13px
+    font-weight: bold
+    display: block
+    padding: 5px 30px
+    text-decoration: none
+    border: 1px solid rgb(240,240,240)
+    border-bottom: 0px
+    height: 18px
+    background-color: rgb(0, 176, 240)
+    color: #fff
+    margin-left: 2px
+    position: relative
+    top: 1px
+    outline: 0
+    -moz-border-radius: 6px 6px 0 0
+    -webkit-border-radius: 6px 6px 0 0
+    &:hover
+      background-color: #F7F7F7
+      color: #333
+      text-decoration: underline      
+    &.current
+      background-color: #fff !important
+      border-bottom: 1px solid #fff
+      border-top: 1px solid #000
+      border-right: 1px solid #000
+      border-left: 1px solid #000
+      color: #000
+      cursor: default
+      text-decoration: none      
+ 
+#stories
+  position: relative
+  clear: both
+  float: left
+  width: 100%
+  overflow: hidden
+  
+.story
+  width: 27%
+  font-size: 0.72em
+  float: left
+  position: relative
+  margin-bottom: 1em
+    
+  th
+    text-align: left
+  
+  h4
+    margin-bottom: 0px
+  
+  h4 + p
+    margin-top: 0px
+  
+  table.heating_choice
+    td.target, th.target
+      text-align: right
+  
+#demand_story
+  left: 2%
+
+#supply_story
+  left: 10%
+
+#ghg_story
+  left: 17%
+  
+td.space
+  font-size: 10px
+
+table.imports
+  
+  .description
+  
+  .energy
+    text-align: right
+  
+  .percent
+    text-align: right
+
+#share
+  position: fixed
+  text-align: right
+  right: 0
+  bottom: 0
+  width: 13em
+  height: 1.7em
+  padding: 5px 5px 0 0
+  margin: 0px
+  border: 1px solid rgb(240,240,240)
+  background: rgb(0, 176, 240)
+  color: #fff
+  border-radius: 5px 0 0 0
+  -moz-border-radius: 5px 0 0 0
+  -moz-box-shadow: 5px 5px 5px 5px #000
+  -webkit-box-shadow: 5px 5px 5px 5px #000
+  box-shadow: 5px 5px 5px 5px #000
+  
+  a
+    color: #fff
+    text-decoration: none
+  
+  a:hover
+    text-decoration: underline
+    
+  
+#share_popup
+  display: none
+  position: fixed
+  z-index: 10
+  width: 45em
+  height: 4em
+  top: 40%
+  left: 25%
+  padding: 5px
+  border: 1px solid #666
+  background: #1396E4
+  color: #fff
+  border-radius: 5px 5px 5px 5px
+  -moz-border-radius: 5px 5px 5px 5px
+  -moz-box-shadow: 5px 5px 5px 5px #000
+  -webkit-box-shadow: 0px 0px 3px #000
+  box-shadow: 5px 5px 5px 5px #000
+  
+  #close
+    position: absolute
+    right: -17px
+    top: -17px
+    
+    img
+      border: 0px
+  
+  p
+    padding: 0
+    margin: 0
+      
+  input
+    padding: 0
+    margin: 0
+    margin-bottom: 5px
+    width: 100%
+  
+  .addthis_button
+    display: block
+    position: absolute
+    right: 5px
+    bottom: 6px
+
+#targetArrow
+  font-size: 1.5em
+  position: absolute
+  z-index: 10
+  top: 161px
+  right: 10px
+
+#ghg
+  p.note
+    margin-bottom: 50px
+    
+#example_pathways
+  margin-left: 20%
+  margin-right: 20%
+  width: 80%
+  
+  h1
+    font: normal normal normal 16px/normal 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif
+    
+  h2
+    font: bold normal normal 12px/normal 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif
+
+table.choice_bars td.one_page_link
+  padding: 0
+  margin: 0
+  width: 10px
+  text-align: center
+
+  a 
+    margin-left: 2px
+    
+table.choice_bars td.one_page_link  a, span.one_page_link a
+  font: bold italic normal 12px/normal 'Times', 'Times New Roman', serif
+  color: #fff
+  background-color: #00B0F0  
+  display: block
+  padding: 0
+  width: 100%
+  height: 100%
+  text-decoration: none
+  
+  &:hover
+    color: #000
+    
+span.one_page_link
+  display: inline-block
+  width: 10px
+  background-color: #00B0F0  
+  text-align: center
+  margin: 0  

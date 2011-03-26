@@ -1,29 +1,30 @@
 %script{ :type => 'text/javascript' }
   $(document).ready(function() {
   = scroll_to_last_position
-  = redirect_to_disclaimer
-  = draw_demand_chart
-  = draw_primary_energy_chart
-  = draw_emissions_chart
+  = render 'primary_energy.js.erb'
   })
   
 #demand
   .chart#demand_chart 
-
   = render "demand_choices"
 
 #supply
   .chart#supply_chart  
-  .switch= link_to "Switch to chart showing just electricity", pathway_url(:id => @code)
-
   = render "supply_choices"
   
 #ghg
-  
+  #targetArrow &larr;
   .chart#emissions_chart
-
   = render "ghg_choices"
+  = render 'ghg_results'
   
-  #keydata= render 'keydata'
-      
+  #keydata
+    %h2 Energy security
+
+    %table.choice_bars.detail#security_detail
+      = choice_bars @pathway.security_row
+
+    = render "security_results"
+
+  
 .clear

@@ -1,0 +1,37 @@
+var demand_chart = new Highcharts.Chart({ 
+  chart: { renderTo: 'demand_chart', defaultSeriesType: 'line' },
+  title: { text: 'UK energy demand' },
+  subtitle: { text: "TWh/yr of final energy"},
+  colors: ['#FF0000','#FFA500','#FFFF00','#00FF00'],
+  plotOptions: {line: {lineColor: null, lineWidth: 2 }},
+  yAxis: { title: null, min: 0, max: 4000 },
+  series: <%= demand_range_data.to_json %>
+});
+
+var supply_chart = new Highcharts.Chart({ 
+  chart: { renderTo: 'supply_chart', defaultSeriesType: 'line' },
+  title: { text: 'UK use of fossil fuels' },
+  subtitle: { text: "TWh/yr of primary energy"},
+  colors: ['#FF0000','#FFA500','#FFFF00','#00FF00'],
+  plotOptions: {line: {lineColor: null, lineWidth: 2 }},
+  yAxis: { title: null, min: 0, max: 4000 },
+  series: <%= supply_range_data.to_json %>
+});
+
+var emissions_chart = new Highcharts.Chart({ 
+  chart: { renderTo: 'emissions_chart', defaultSeriesType: 'line' },
+  title: { text: 'UK greenhouse gas emissions' },
+  subtitle: { text: "MtCO<sub>2</sub>e/yr"},   
+  colors: ['#FF0000','#FFA500','#FFFF00','#00FF00'],
+  plotOptions: {line: {lineColor: null, lineWidth: 2 }},
+  yAxis: { title: null, min: -500, max: 1000 },
+  tooltip: {
+    formatter: function() {
+      return '<b>'+ this.series.name +'</b><br/>'+
+      this.x +': '+ Highcharts.numberFormat(this.y, 0, ',') +' MtCO2e/yr';
+    }
+  },
+  series: <%= emissions_range_data.to_json %>
+});
+
+emissions_chart.renderer.text("80% reduction on 1990" ,60,190).attr({zIndex:5,style:"color:#000;fill:#000;font-size:0.75em"}).add();

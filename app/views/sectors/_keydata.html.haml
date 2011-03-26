@@ -1,26 +1,28 @@
-%p 
-  This view shows the impact of selecting different levels of 
-  = @name.downcase
-  on energy demand, on
-  = showing_primary_energy? ? "fossil fuel use," : "unabated fossil fuel electricity,"
-  and on greenhouse gas emissions.
-  
-%p
-  The top of the green areas indicate what would happen if level 1 of 
-  = @name.downcase
-  were selected; the top of the yellow areas what would happen if level 2
-  were selected; the top of the orange areas what would happen if level 3
-  were selected and the top of the red areas what would happen if level 4 of
-  = @name.downcase
-  were selected.
-  
-%p
-  In each case, the variation is based on the other selections that have already been made.
-  This means that, for instance, if you already have selected enough low carbon electricity
-  to meet demand, then this view will show no impact on emissions from selecting additional low carbon electricity.
-  
-%p
-  To return to the original view, click on the 
-  = @name.downcase
-  link again. Or click
-  = link_to 'here', showing_primary_energy? ? primary_energy_chart_pathway_url(@code) : pathway_url(@code)
+%table.comparison
+  %tr
+    %th Level of #{@name}
+    %th 2050 emissions, % below 1990 levels
+  - @pathways.each.with_index do |pathway,i|
+    %tr
+      %td= @pathway.choice_types[@choice] == "A" ? %w{A B C D}[i] : i + 1
+      %td
+        = (pathway.percent_ghg_reduction * 100).round
+        \%
+
+%h2 Energy security
+
+%table.choice_bars.detail#security_detail
+  = choice_bars @pathway.security_row
+
+%table.comparison
+  %tr
+    %th Level of #{@name}
+    %th % energy imported
+    %th GW of backup required
+  - @pathways.each.with_index do |pathway,i|
+    %tr
+      %td= @pathway.choice_types[@choice] == "A" ? %w{A B C D}[i] : i + 1
+      %td
+        = (pathway.percent_energy_imported * 100).round
+        \%
+      %td= pathway.gw_backup_needed.round

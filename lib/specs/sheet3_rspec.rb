@@ -1,711 +1,759 @@
 # coding: utf-8
 require_relative '../spreadsheet'
 # Control
-describe Sheet3 do
+describe 'Sheet3' do
   def sheet3; $spreadsheet ||= Spreadsheet.new; $spreadsheet.sheet3; end
 
-  it 'cell d5 should equal "Combustion + CCS"' do
-    sheet3.d5.should == "Combustion + CCS"
+  it 'cell e5 should equal "Nuclear power"' do
+    sheet3.e5.should == "Nuclear power"
   end
 
-  it 'cell d6 should equal "Nuclear power"' do
-    sheet3.d6.should == "Nuclear power"
+  it 'cell e6 should equal "Carbon Capture Storage (CCS)"' do
+    sheet3.e6.should == "Carbon Capture Storage (CCS)"
   end
 
-  it 'cell d7 should equal "Onshore wind"' do
-    sheet3.d7.should == "Onshore wind"
+  it 'cell bv8 should equal "Balancing capacity used"' do
+    sheet3.bv8.should == "Balancing capacity used"
   end
 
-  it 'cell bh7 should equal "TWh / year"' do
-    sheet3.bh7.should == "TWh / year"
+  it 'cell ca8 should equal 0.506136050447283' do
+    sheet3.ca8.should be_within(0.05061360504472831).of(0.506136050447283)
   end
 
-  it 'cell d8 should equal "Offshore wind"' do
-    sheet3.d8.should == "Offshore wind"
+  it 'cell cb8 should equal 0.7553709311663632' do
+    sheet3.cb8.should be_within(0.07553709311663633).of(0.7553709311663632)
   end
 
-  it 'cell be8 should equal "Coal exports (imports)"' do
-    sheet3.be8.should == "Coal exports (imports)"
+  it 'cell cc8 should equal 0.7700899629844966' do
+    sheet3.cc8.should be_within(0.07700899629844966).of(0.7700899629844966)
   end
 
-  it 'cell bi8 should equal -276.532633698845' do
-    sheet3.bi8.should be_close(-276.532633698845,27.6532633698845)
+  it 'cell cd8 should equal 0.4090378600655555' do
+    sheet3.cd8.should be_within(0.04090378600655555).of(0.4090378600655555)
   end
 
-  it 'cell bj8 should equal -3.70354026647777' do
-    sheet3.bj8.should be_close(-3.70354026647777,0.370354026647777)
+  it 'cell e9 should equal "Offshore wind"' do
+    sheet3.e9.should == "Offshore wind"
   end
 
-  it 'cell bk8 should equal 132.548608498843' do
-    sheet3.bk8.should be_close(132.548608498843,13.2548608498843)
+  it 'cell bv9 should equal "Standby capacity required"' do
+    sheet3.bv9.should == "Standby capacity required"
   end
 
-  it 'cell bl8 should equal 177.330730510175' do
-    sheet3.bl8.should be_close(177.330730510175,17.7330730510175)
+  it 'cell by9 should equal "GWcapacity"' do
+    sheet3.by9.should == "GWcapacity"
   end
 
-  it 'cell d9 should equal "Hydroelectric"' do
-    sheet3.d9.should == "Hydroelectric"
+  it 'cell ca9 should equal 0.0' do
+    sheet3.ca9.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell be9 should equal "Oil and petroleum products exports (imports)"' do
-    sheet3.be9.should == "Oil and petroleum products exports (imports)"
+  it 'cell cb9 should equal 0.0' do
+    sheet3.cb9.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell bi9 should equal 100.592945685045' do
-    sheet3.bi9.should be_close(100.592945685045,10.0592945685045)
+  it 'cell cc9 should equal 0.0' do
+    sheet3.cc9.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell bj9 should equal -327.62826529693' do
-    sheet3.bj9.should be_close(-327.62826529693,32.762826529693)
+  it 'cell cd9 should equal 0.0' do
+    sheet3.cd9.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell bk9 should equal -463.886521985076' do
-    sheet3.bk9.should be_close(-463.886521985076,46.3886521985076)
+  it 'cell e10 should equal "Onshore wind"' do
+    sheet3.e10.should == "Onshore wind"
   end
 
-  it 'cell bl9 should equal -653.425044562527' do
-    sheet3.bl9.should be_close(-653.425044562527,65.3425044562527)
+  it 'cell bv10 should equal "Probable annual emissions"' do
+    sheet3.bv10.should == "Probable annual emissions"
   end
 
-  it 'cell d10 should equal "Wave and Tidal"' do
-    sheet3.d10.should == "Wave and Tidal"
+  it 'cell by10 should equal "MtCO2e"' do
+    sheet3.by10.should == "MtCO2e"
   end
 
-  it 'cell be10 should equal "Gas exports (imports)"' do
-    sheet3.be10.should == "Gas exports (imports)"
+  it 'cell ca10 should equal 0.0' do
+    sheet3.ca10.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell bi10 should equal -169.382628386639' do
-    sheet3.bi10.should be_close(-169.382628386639,16.9382628386639)
+  it 'cell cb10 should equal 0.0' do
+    sheet3.cb10.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell bj10 should equal -843.838227872119' do
-    sheet3.bj10.should be_close(-843.838227872119,84.3838227872119)
+  it 'cell cc10 should equal 0.0' do
+    sheet3.cc10.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell bk10 should equal -1196.41069256672' do
-    sheet3.bk10.should be_close(-1196.41069256672,119.641069256672)
+  it 'cell cd10 should equal 0.0' do
+    sheet3.cd10.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell bl10 should equal -1675.72587376211' do
-    sheet3.bl10.should be_close(-1675.72587376211,167.572587376211)
+  it 'cell e11 should equal "Tidal and Wave"' do
+    sheet3.e11.should == "Tidal and Wave"
   end
 
-  it 'cell d11 should equal "Geothermal"' do
-    sheet3.d11.should == "Geothermal"
+  it 'cell e12 should equal "Biomass/Coal power stations"' do
+    sheet3.e12.should == "Biomass/Coal power stations"
   end
 
-  it 'cell be11 should equal "Biomatter exports (imports)"' do
-    sheet3.be11.should == "Biomatter exports (imports)"
+  it 'cell e13 should equal "Solar PV"' do
+    sheet3.e13.should == "Solar PV"
   end
 
-  it 'cell bi11 should equal -4.00072' do
-    sheet3.bi11.should be_close(-4.00072,0.400072)
+  it 'cell e14 should equal "Solar thermal"' do
+    sheet3.e14.should == "Solar thermal"
   end
 
-  it 'cell bj11 should equal -2.7912' do
-    sheet3.bj11.should be_close(-2.7912,0.27912)
+  it 'cell e15 should equal "Geothermal electricity"' do
+    sheet3.e15.should == "Geothermal electricity"
   end
 
-  it 'cell bk11 should equal -1.8608' do
-    sheet3.bk11.should be_close(-1.8608,0.18608)
+  it 'cell e16 should equal "Hydroelectric power stations"' do
+    sheet3.e16.should == "Hydroelectric power stations"
   end
 
-  it 'cell bl11 should equal 0.0' do
-    sheet3.bl11.should be_close(0.0,1.0e-08)
+  it 'cell e17 should equal "Small-scale wind"' do
+    sheet3.e17.should == "Small-scale wind"
   end
 
-  it 'cell d12 should equal "Distributed solar PV"' do
-    sheet3.d12.should == "Distributed solar PV"
+  it 'cell e18 should equal "Electricity imports"' do
+    sheet3.e18.should == "Electricity imports"
   end
 
-  it 'cell be12 should equal "Electricity exports (imports)"' do
-    sheet3.be12.should == "Electricity exports (imports)"
+  it 'cell e19 should equal "Agriculture and land use"' do
+    sheet3.e19.should == "Agriculture and land use"
   end
 
-  it 'cell bi12 should equal -5.21452425' do
-    sheet3.bi12.should be_close(-5.21452425,0.521452425)
+  it 'cell bz19 should equal "TWh / year"' do
+    sheet3.bz19.should == "TWh / year"
   end
 
-  it 'cell bj12 should equal 5.6843418860808e-14' do
-    sheet3.bj12.should be_close(5.6843418860808e-14,1.0e-08)
+  it 'cell bw20 should equal "Coal oversupply (imports)"' do
+    sheet3.bw20.should == "Coal oversupply (imports)"
   end
 
-  it 'cell bk12 should equal 5.6843418860808e-14' do
-    sheet3.bk12.should be_close(5.6843418860808e-14,1.0e-08)
+  it 'cell ca20 should equal -322.6813725850956' do
+    sheet3.ca20.should be_within(32.26813725850956).of(-322.6813725850956)
   end
 
-  it 'cell bl12 should equal -5.6843418860808e-14' do
-    sheet3.bl12.should be_close(-5.6843418860808e-14,1.0e-08)
+  it 'cell cb20 should equal -142.43831609859552' do
+    sheet3.cb20.should be_within(14.243831609859553).of(-142.43831609859552)
   end
 
-  it 'cell d13 should equal "Distributed solar thermal"' do
-    sheet3.d13.should == "Distributed solar thermal"
+  it 'cell cc20 should equal 110.84470951305644' do
+    sheet3.cc20.should be_within(11.084470951305645).of(110.84470951305644)
   end
 
-  it 'cell d14 should equal "Micro wind"' do
-    sheet3.d14.should == "Micro wind"
+  it 'cell cd20 should equal 138.00973142063305' do
+    sheet3.cd20.should be_within(13.800973142063306).of(138.00973142063305)
   end
 
-  it 'cell d15 should equal "Biomatter to fuel conversion"' do
-    sheet3.d15.should == "Biomatter to fuel conversion"
+  it 'cell bw21 should equal "Oil and petroleum products oversupply (imports)"' do
+    sheet3.bw21.should == "Oil and petroleum products oversupply (imports)"
   end
 
-  it 'cell d16 should equal "Bioenergy imports"' do
-    sheet3.d16.should == "Bioenergy imports"
+  it 'cell ca21 should equal 87.08878019580573' do
+    sheet3.ca21.should be_within(8.708878019580572).of(87.08878019580573)
   end
 
-  it 'cell d17 should equal "Agriculture and land use"' do
-    sheet3.d17.should == "Agriculture and land use"
+  it 'cell cb21 should equal -345.81388788947186' do
+    sheet3.cb21.should be_within(34.58138878894719).of(-345.81388788947186)
   end
 
-  it 'cell bh17 should equal "TWh / year"' do
-    sheet3.bh17.should == "TWh / year"
+  it 'cell cc21 should equal -504.7426557111311' do
+    sheet3.cc21.should be_within(50.47426557111311).of(-504.7426557111311)
   end
 
-  it 'cell d18 should equal "Waste arising"' do
-    sheet3.d18.should == "Waste arising"
+  it 'cell cd21 should equal -767.3991107031545' do
+    sheet3.cd21.should be_within(76.73991107031546).of(-767.3991107031545)
   end
 
-  it 'cell d19 should equal "Marine algae"' do
-    sheet3.d19.should == "Marine algae"
+  it 'cell e22 should equal "Volume of Waste & Recycling"' do
+    sheet3.e22.should == "Volume of Waste & Recycling"
   end
 
-  it 'cell bi19 should equal 1018.95657735663' do
-    sheet3.bi19.should be_close(1018.95657735663,101.895657735663)
+  it 'cell bw22 should equal "Gas oversupply (imports)"' do
+    sheet3.bw22.should == "Gas oversupply (imports)"
   end
 
-  it 'cell bj19 should equal 1278.02102565' do
-    sheet3.bj19.should be_close(1278.02102565,127.802102565)
+  it 'cell ca22 should equal -133.59090031729465' do
+    sheet3.ca22.should be_within(13.359090031729465).of(-133.59090031729465)
   end
 
-  it 'cell bk19 should equal 1487.40184278062' do
-    sheet3.bk19.should be_close(1487.40184278062,148.740184278062)
+  it 'cell cb22 should equal -795.1021604351442' do
+    sheet3.cb22.should be_within(79.51021604351443).of(-795.1021604351442)
   end
 
-  it 'cell bl19 should equal 1814.98574670287' do
-    sheet3.bl19.should be_close(1814.98574670287,181.498574670287)
+  it 'cell cc22 should equal -1294.2712972177815' do
+    sheet3.cc22.should be_within(129.42712972177816).of(-1294.2712972177815)
   end
 
-  it 'cell d20 should equal "Electricity imports / exports"' do
-    sheet3.d20.should == "Electricity imports / exports"
+  it 'cell cd22 should equal -1996.830537940715' do
+    sheet3.cd22.should be_within(199.6830537940715).of(-1996.830537940715)
   end
 
-  it 'cell bi20 should equal 0.0218380598405812' do
-    sheet3.bi20.should be_close(0.0218380598405812,0.00218380598405812)
+  it 'cell e23 should equal "Marine algae"' do
+    sheet3.e23.should == "Marine algae"
   end
 
-  it 'cell bj20 should equal 0.0344975644482101' do
-    sheet3.bj20.should be_close(0.0344975644482101,0.00344975644482101)
+  it 'cell bw23 should equal "Biomass oversupply (imports)"' do
+    sheet3.bw23.should == "Biomass oversupply (imports)"
   end
 
-  it 'cell bk20 should equal 0.0352320715141783' do
-    sheet3.bk20.should be_close(0.0352320715141783,0.00352320715141783)
+  it 'cell ca23 should equal -4.00072' do
+    sheet3.ca23.should be_within(0.40007200000000004).of(-4.00072)
   end
 
-  it 'cell bl20 should equal 0.0319161926379586' do
-    sheet3.bl20.should be_close(0.0319161926379586,0.00319161926379586)
+  it 'cell cb23 should equal -2.7912' do
+    sheet3.cb23.should be_within(0.27912).of(-2.7912)
   end
 
-  it 'cell d21 should equal "Storage, demand shifting, backup"' do
-    sheet3.d21.should == "Storage, demand shifting, backup"
+  it 'cell cc23 should equal -1.8608' do
+    sheet3.cc23.should be_within(0.18608000000000002).of(-1.8608)
   end
 
-  it 'cell bi21 should equal 0.318441250675987' do
-    sheet3.bi21.should be_close(0.318441250675987,0.0318441250675987)
+  it 'cell cd23 should equal 0.0' do
+    sheet3.cd23.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell bj21 should equal 0.311669301247542' do
-    sheet3.bj21.should be_close(0.311669301247542,0.0311669301247542)
+  it 'cell e24 should equal "Types of fuel from Biomass"' do
+    sheet3.e24.should == "Types of fuel from Biomass"
   end
 
-  it 'cell bk21 should equal 0.302939855008775' do
-    sheet3.bk21.should be_close(0.302939855008775,0.0302939855008775)
+  it 'cell bw24 should equal "Electricity oversupply (imports)"' do
+    sheet3.bw24.should == "Electricity oversupply (imports)"
   end
 
-  it 'cell bl21 should equal 0.29068896729398' do
-    sheet3.bl21.should be_close(0.29068896729398,0.029068896729398)
+  it 'cell ca24 should equal -5.21452425' do
+    sheet3.ca24.should be_within(0.521452425).of(-5.21452425)
   end
 
-  it 'cell bi22 should equal 0.0768063738587144' do
-    sheet3.bi22.should be_close(0.0768063738587144,0.00768063738587144)
+  it 'cell cb24 should equal -5.684341886080802e-14' do
+    sheet3.cb24.should be_within(1.0e-08).of(-5.684341886080802e-14)
   end
 
-  it 'cell bj22 should equal 0.0719815968772561' do
-    sheet3.bj22.should be_close(0.0719815968772561,0.00719815968772561)
+  it 'cell cc24 should equal 0.0' do
+    sheet3.cc24.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell bk22 should equal 0.0728291793931259' do
-    sheet3.bk22.should be_close(0.0728291793931259,0.00728291793931259)
+  it 'cell cd24 should equal -1.1368683772161603e-13' do
+    sheet3.cd24.should be_within(1.0e-08).of(-1.1368683772161603e-13)
   end
 
-  it 'cell bl22 should equal 0.0776751853652342' do
-    sheet3.bl22.should be_close(0.0776751853652342,0.00776751853652342)
+  it 'cell e25 should equal "Bioenergy imports"' do
+    sheet3.e25.should == "Bioenergy imports"
   end
 
-  it 'cell d24 should equal "Domestic space heating and hot water"' do
-    sheet3.d24.should == "Domestic space heating and hot water"
+  it 'cell e27 should equal "Domestic passenger transport"' do
+    sheet3.e27.should == "Domestic passenger transport"
   end
 
-  it 'cell bi24 should equal 880.010639206463' do
-    sheet3.bi24.should be_close(880.010639206463,88.0010639206463)
+  it 'cell bz28 should equal "TWh / year"' do
+    sheet3.bz28.should == "TWh / year"
   end
 
-  it 'cell bj24 should equal 864.821194584911' do
-    sheet3.bj24.should be_close(864.821194584911,86.4821194584911)
+  it 'cell e30 should equal "Domestic freight"' do
+    sheet3.e30.should == "Domestic freight"
   end
 
-  it 'cell bk24 should equal 816.144968103509' do
-    sheet3.bk24.should be_close(816.144968103509,81.6144968103509)
+  it 'cell ca30 should equal 983.3246092790712' do
+    sheet3.ca30.should be_within(98.33246092790712).of(983.3246092790712)
   end
 
-  it 'cell bl24 should equal 840.692098682022' do
-    sheet3.bl24.should be_close(840.692098682022,84.0692098682022)
+  it 'cell cb30 should equal 1229.4837702915615' do
+    sheet3.cb30.should be_within(122.94837702915616).of(1229.4837702915615)
   end
 
-  it 'cell bi25 should equal 0.00157860048541561' do
-    sheet3.bi25.should be_close(0.00157860048541561,0.000157860048541561)
+  it 'cell cc30 should equal 1589.114582025341' do
+    sheet3.cc30.should be_within(158.9114582025341).of(1589.114582025341)
   end
 
-  it 'cell bj25 should equal 0.0107827778375252' do
-    sheet3.bj25.should be_close(0.0107827778375252,0.00107827778375252)
+  it 'cell cd30 should equal 2140.5246097535987' do
+    sheet3.cd30.should be_within(214.05246097535988).of(2140.5246097535987)
   end
 
-  it 'cell bk25 should equal 0.02348915016597' do
-    sheet3.bk25.should be_close(0.02348915016597,0.002348915016597)
+  it 'cell e31 should equal "International aviation"' do
+    sheet3.e31.should == "International aviation"
   end
 
-  it 'cell bl25 should equal 0.0649961909551592' do
-    sheet3.bl25.should be_close(0.0649961909551592,0.00649961909551592)
+  it 'cell ca31 should equal 0.022377129707350875' do
+    sheet3.ca31.should be_within(0.0022377129707350876).of(0.022377129707350875)
   end
 
-  it 'cell bi26 should equal 0.804622142085236' do
-    sheet3.bi26.should be_close(0.804622142085236,0.0804622142085236)
+  it 'cell cb31 should equal 0.03556950090607039' do
+    sheet3.cb31.should be_within(0.003556950090607039).of(0.03556950090607039)
   end
 
-  it 'cell bj26 should equal 0.82459792646919' do
-    sheet3.bj26.should be_close(0.82459792646919,0.082459792646919)
+  it 'cell cc31 should equal 0.03610275241902468' do
+    sheet3.cc31.should be_within(0.003610275241902468).of(0.03610275241902468)
   end
 
-  it 'cell bk26 should equal 0.824511809439783' do
-    sheet3.bk26.should be_close(0.824511809439783,0.0824511809439783)
+  it 'cell cd31 should equal 0.030843052514147488' do
+    sheet3.cd31.should be_within(0.003084305251414749).of(0.030843052514147488)
   end
 
-  it 'cell bl26 should equal 0.833416888547616' do
-    sheet3.bl26.should be_close(0.833416888547616,0.0833416888547616)
+  it 'cell e32 should equal "International shipping"' do
+    sheet3.e32.should == "International shipping"
   end
 
-  it 'cell bi27 should equal 0.0927523273499574' do
-    sheet3.bi27.should be_close(0.0927523273499574,0.00927523273499574)
+  it 'cell ca32 should equal 0.32998035828256206' do
+    sheet3.ca32.should be_within(0.03299803582825621).of(0.32998035828256206)
   end
 
-  it 'cell bj27 should equal 0.0972585870649577' do
-    sheet3.bj27.should be_close(0.0972585870649577,0.00972585870649577)
+  it 'cell cb32 should equal 0.319441654996189' do
+    sheet3.cb32.should be_within(0.0319441654996189).of(0.319441654996189)
   end
 
-  it 'cell bk27 should equal 0.106010258176006' do
-    sheet3.bk27.should be_close(0.106010258176006,0.0106010258176006)
+  it 'cell cc32 should equal 0.2794817262797663' do
+    sheet3.cc32.should be_within(0.027948172627976633).of(0.2794817262797663)
   end
 
-  it 'cell bl27 should equal 0.110216888470891' do
-    sheet3.bl27.should be_close(0.110216888470891,0.0110216888470891)
+  it 'cell cd32 should equal 0.243341598342912' do
+    sheet3.cd32.should be_within(0.0243341598342912).of(0.243341598342912)
   end
 
-  it 'cell bi28 should equal 0.0639386419156573' do
-    sheet3.bi28.should be_close(0.0639386419156573,0.00639386419156573)
+  it 'cell e33 should equal "Domestic space heating and hot water"' do
+    sheet3.e33.should == "Domestic space heating and hot water"
   end
 
-  it 'cell bj28 should equal 0.0556206746993027' do
-    sheet3.bj28.should be_close(0.0556206746993027,0.00556206746993027)
+  it 'cell bk33 should equal "Hydrocarbon fuel power generation"' do
+    sheet3.bk33.should == "Hydrocarbon fuel power generation"
   end
 
-  it 'cell bk28 should equal 0.054682749359856' do
-    sheet3.bk28.should be_close(0.054682749359856,0.0054682749359856)
+  it 'cell bo33 should equal 196.8319572405069' do
+    sheet3.bo33.should be_within(19.68319572405069).of(196.8319572405069)
   end
 
-  it 'cell bl28 should equal 0.0488345740261039' do
-    sheet3.bl28.should be_close(0.0488345740261039,0.00488345740261039)
+  it 'cell bp33 should equal 218.01403401481343' do
+    sheet3.bp33.should be_within(21.801403401481345).of(218.01403401481343)
   end
 
-  it 'cell d29 should equal "Commercial heating and cooling"' do
-    sheet3.d29.should == "Commercial heating and cooling"
+  it 'cell bq33 should equal 0.2827235509388265' do
+    sheet3.bq33.should be_within(0.02827235509388265).of(0.2827235509388265)
   end
 
-  it 'cell bi30 should equal 442.864899761088' do
-    sheet3.bi30.should be_close(442.864899761088,44.2864899761088)
+  it 'cell ca33 should equal 0.07958954661332825' do
+    sheet3.ca33.should be_within(0.007958954661332824).of(0.07958954661332825)
   end
 
-  it 'cell bj30 should equal 228.97302656674' do
-    sheet3.bj30.should be_close(228.97302656674,22.897302656674)
+  it 'cell cb33 should equal 0.0748232685065699' do
+    sheet3.cb33.should be_within(0.00748232685065699).of(0.0748232685065699)
   end
 
-  it 'cell bk30 should equal 113.114194967272' do
-    sheet3.bk30.should be_close(113.114194967272,11.3114194967272)
+  it 'cell cc33 should equal 0.06816768083486673' do
+    sheet3.cc33.should be_within(0.006816768083486673).of(0.06816768083486673)
   end
 
-  it 'cell bl30 should equal 113.569946453706' do
-    sheet3.bl30.should be_close(113.569946453706,11.3569946453706)
+  it 'cell cd33 should equal 0.06586205721158803' do
+    sheet3.cd33.should be_within(0.006586205721158803).of(0.06586205721158803)
   end
 
-  it 'cell bi31 should equal 0.0359768699441382' do
-    sheet3.bi31.should be_close(0.0359768699441382,0.00359768699441382)
+  it 'cell bk34 should equal "Bioenergy"' do
+    sheet3.bk34.should == "Bioenergy"
   end
 
-  it 'cell bj31 should equal 0.147222731186422' do
-    sheet3.bj31.should be_close(0.147222731186422,0.0147222731186422)
+  it 'cell bo34 should equal -9.394159656359204' do
+    sheet3.bo34.should be_within(0.9394159656359204).of(-9.394159656359204)
   end
 
-  it 'cell bk31 should equal 0.388776440881482' do
-    sheet3.bk31.should be_close(0.388776440881482,0.0388776440881482)
+  it 'cell bp34 should equal -31.848018230568222' do
+    sheet3.bp34.should be_within(3.1848018230568225).of(-31.848018230568222)
   end
 
-  it 'cell bl31 should equal 0.602379448922815' do
-    sheet3.bl31.should be_close(0.602379448922815,0.0602379448922815)
+  it 'cell bq34 should equal -0.041300941222430304' do
+    sheet3.bq34.should be_within(0.004130094122243031).of(-0.041300941222430304)
   end
 
-  it 'cell bi32 should equal 0.0' do
-    sheet3.bi32.should be_close(0.0,1.0e-08)
+  it 'cell ca34 should equal 0.15259759848678905' do
+    sheet3.ca34.should be_within(0.015259759848678906).of(0.15259759848678905)
   end
 
-  it 'cell bj32 should equal 0.12162016414101' do
-    sheet3.bj32.should be_close(0.12162016414101,0.012162016414101)
+  it 'cell cb34 should equal 0.14154331476442716' do
+    sheet3.cb34.should be_within(0.014154331476442718).of(0.14154331476442716)
   end
 
-  it 'cell bk32 should equal 0.245695419365127' do
-    sheet3.bk32.should be_close(0.245695419365127,0.0245695419365127)
+  it 'cell cc34 should equal 0.12933460947958075' do
+    sheet3.cc34.should be_within(0.012933460947958076).of(0.12933460947958075)
   end
 
-  it 'cell bl32 should equal 0.243779294364156' do
-    sheet3.bl32.should be_close(0.243779294364156,0.0243779294364156)
+  it 'cell cd34 should equal 0.1362545598187424' do
+    sheet3.cd34.should be_within(0.013625455981874241).of(0.1362545598187424)
   end
 
-  it 'cell d33 should equal "Domestic lighting, appliances, and cooking"' do
-    sheet3.d33.should == "Domestic lighting, appliances, and cooking"
+  it 'cell bk35 should equal "Geosequestration"' do
+    sheet3.bk35.should == "Geosequestration"
   end
 
-  it 'cell as33 should equal "Hydrocarbon fuel power generation"' do
-    sheet3.as33.should == "Hydrocarbon fuel power generation"
+  it 'cell bo35 should equal 0.0' do
+    sheet3.bo35.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell aw33 should equal 188.796337542787' do
-    sheet3.aw33.should be_close(188.796337542787,18.8796337542787)
+  it 'cell bp35 should equal 0.0' do
+    sheet3.bp35.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell ax33 should equal 182.21406594354' do
-    sheet3.ax33.should be_close(182.21406594354,18.221406594354)
+  it 'cell bq35 should equal 0.0' do
+    sheet3.bq35.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell ay33 should equal 0.240392019112983' do
-    sheet3.ay33.should be_close(0.240392019112983,0.0240392019112983)
+  it 'cell ca35 should equal 0.3505704365604274' do
+    sheet3.ca35.should be_within(0.035057043656042744).of(0.3505704365604274)
   end
 
-  it 'cell bi33 should equal 0.842639745387435' do
-    sheet3.bi33.should be_close(0.842639745387435,0.0842639745387435)
+  it 'cell cb35 should equal 0.4139466451801557' do
+    sheet3.cb35.should be_within(0.04139466451801557).of(0.4139466451801557)
   end
 
-  it 'cell bj33 should equal 0.589741824287067' do
-    sheet3.bj33.should be_close(0.589741824287067,0.0589741824287067)
+  it 'cell cc35 should equal 0.4924010728633626' do
+    sheet3.cc35.should be_within(0.049240107286336265).of(0.4924010728633626)
   end
 
-  it 'cell bk33 should equal 0.182458712683863' do
-    sheet3.bk33.should be_close(0.182458712683863,0.0182458712683863)
+  it 'cell cd35 should equal 0.5381817897894905' do
+    sheet3.cd35.should be_within(0.053818178978949055).of(0.5381817897894905)
   end
 
-  it 'cell bl33 should equal 0.181726513434721' do
-    sheet3.bl33.should be_close(0.181726513434721,0.0181726513434721)
+  it 'cell bk36 should equal "Agriculture and waste"' do
+    sheet3.bk36.should == "Agriculture and waste"
   end
 
-  it 'cell as34 should equal "Bioenergy"' do
-    sheet3.as34.should == "Bioenergy"
+  it 'cell bo36 should equal 65.90661263983685' do
+    sheet3.bo36.should be_within(6.5906612639836855).of(65.90661263983685)
   end
 
-  it 'cell aw34 should equal -9.3490017060996' do
-    sheet3.aw34.should be_close(-9.3490017060996,0.93490017060996)
+  it 'cell bp36 should equal 77.80525941161521' do
+    sheet3.bp36.should be_within(7.780525941161521).of(77.80525941161521)
   end
 
-  it 'cell ax34 should equal -45.3900521766255' do
-    sheet3.ax34.should be_close(-45.3900521766255,4.53900521766255)
+  it 'cell bq36 should equal 0.10089891378769562' do
+    sheet3.bq36.should be_within(0.010089891378769563).of(0.10089891378769562)
   end
 
-  it 'cell ay34 should equal -0.059882349004624' do
-    sheet3.ay34.should be_close(-0.059882349004624,0.0059882349004624)
+  it 'cell ca36 should equal 0.0' do
+    sheet3.ca36.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell bi34 should equal 0.12318264359967' do
-    sheet3.bi34.should be_close(0.12318264359967,0.012318264359967)
+  it 'cell cb36 should equal 0.004622299627048898' do
+    sheet3.cb36.should be_within(0.0004622299627048898).of(0.004622299627048898)
   end
 
-  it 'cell bj34 should equal 0.245514981478988' do
-    sheet3.bj34.should be_close(0.245514981478988,0.0245514981478988)
+  it 'cell cc36 should equal 0.003458978463181986' do
+    sheet3.cc36.should be_within(0.00034589784631819864).of(0.003458978463181986)
   end
 
-  it 'cell bk34 should equal 0.511217995213308' do
-    sheet3.bk34.should be_close(0.511217995213308,0.0511217995213308)
+  it 'cell cd36 should equal 0.0024099016767425295' do
+    sheet3.cd36.should be_within(0.00024099016767425296).of(0.0024099016767425295)
   end
 
-  it 'cell bl34 should equal 0.545292762275259' do
-    sheet3.bl34.should be_close(0.545292762275259,0.0545292762275259)
+  it 'cell bk37 should equal "Heating"' do
+    sheet3.bk37.should == "Heating"
   end
 
-  it 'cell as35 should equal "Geosequestration"' do
-    sheet3.as35.should == "Geosequestration"
+  it 'cell bo37 should equal 84.42746088138698' do
+    sheet3.bo37.should be_within(8.442746088138698).of(84.42746088138698)
   end
 
-  it 'cell aw35 should equal 0.0' do
-    sheet3.aw35.should be_close(0.0,1.0e-08)
+  it 'cell bp37 should equal 123.69172054356795' do
+    sheet3.bp37.should be_within(12.369172054356795).of(123.69172054356795)
   end
 
-  it 'cell ax35 should equal 0.0' do
-    sheet3.ax35.should be_close(0.0,1.0e-08)
+  it 'cell bq37 should equal 0.16040509782702508' do
+    sheet3.bq37.should be_within(0.01604050978270251).of(0.16040509782702508)
   end
 
-  it 'cell ay35 should equal 0.0' do
-    sheet3.ay35.should be_close(0.0,1.0e-08)
+  it 'cell e38 should equal "Domestic lighting, appliances, and cooking"' do
+    sheet3.e38.should == "Domestic lighting, appliances, and cooking"
   end
 
-  it 'cell bi35 should equal 0.0321922171071554' do
-    sheet3.bi35.should be_close(0.0321922171071554,0.00321922171071554)
+  it 'cell bk38 should equal "Lighting and appliances"' do
+    sheet3.bk38.should == "Lighting and appliances"
   end
 
-  it 'cell bj35 should equal 0.0391877526232332' do
-    sheet3.bj35.should be_close(0.0391877526232332,0.00391877526232332)
+  it 'cell bo38 should equal 3.141184245661737' do
+    sheet3.bo38.should be_within(0.3141184245661737).of(3.141184245661737)
   end
 
-  it 'cell bk35 should equal 0.0526016146051766' do
-    sheet3.bk35.should be_close(0.0526016146051766,0.00526016146051766)
+  it 'cell bp38 should equal 3.157195944639504' do
+    sheet3.bp38.should be_within(0.3157195944639504).of(3.157195944639504)
   end
 
-  it 'cell bl35 should equal 0.0209674816408621' do
-    sheet3.bl35.should be_close(0.0209674816408621,0.00209674816408621)
+  it 'cell bq38 should equal 0.004094294445363516' do
+    sheet3.bq38.should be_within(0.00040942944453635163).of(0.004094294445363516)
   end
 
-  it 'cell d36 should equal "Commercial lighting, appliances, and catering"' do
-    sheet3.d36.should == "Commercial lighting, appliances, and catering"
+  it 'cell ca38 should equal 893.2928046957027' do
+    sheet3.ca38.should be_within(89.32928046957028).of(893.2928046957027)
   end
 
-  it 'cell as36 should equal "Agriculture and waste"' do
-    sheet3.as36.should == "Agriculture and waste"
+  it 'cell cb38 should equal 875.7154384868504' do
+    sheet3.cb38.should be_within(87.57154384868505).of(875.7154384868504)
   end
 
-  it 'cell aw36 should equal 65.9066126398369' do
-    sheet3.aw36.should be_close(65.9066126398369,6.59066126398369)
+  it 'cell cc38 should equal 841.9757652950701' do
+    sheet3.cc38.should be_within(84.19757652950702).of(841.9757652950701)
   end
 
-  it 'cell ax36 should equal 70.6242862432608' do
-    sheet3.ax36.should be_close(70.6242862432608,7.06242862432608)
+  it 'cell cd38 should equal 907.7692266122041' do
+    sheet3.cd38.should be_within(90.77692266122041).of(907.7692266122041)
   end
 
-  it 'cell ay36 should equal 0.0931734588134995' do
-    sheet3.ay36.should be_close(0.0931734588134995,0.00931734588134995)
+  it 'cell bk39 should equal "Industry"' do
+    sheet3.bk39.should == "Industry"
   end
 
-  it 'cell as37 should equal "Heating"' do
-    sheet3.as37.should == "Heating"
+  it 'cell bo39 should equal 93.41484291354766' do
+    sheet3.bo39.should be_within(9.341484291354766).of(93.41484291354766)
   end
 
-  it 'cell aw37 should equal 84.427460881387' do
-    sheet3.aw37.should be_close(84.427460881387,8.4427460881387)
+  it 'cell bp39 should equal 165.5209541617014' do
+    sheet3.bp39.should be_within(16.552095416170143).of(165.5209541617014)
   end
 
-  it 'cell ax37 should equal 124.949288992281' do
-    sheet3.ax37.should be_close(124.949288992281,12.4949288992281)
+  it 'cell bq39 should equal 0.21464981429681385' do
+    sheet3.bq39.should be_within(0.021464981429681385).of(0.21464981429681385)
   end
 
-  it 'cell ay37 should equal 0.164843541095741' do
-    sheet3.ay37.should be_close(0.164843541095741,0.0164843541095741)
+  it 'cell ca39 should equal 0.001306609900009012' do
+    sheet3.ca39.should be_within(0.00013066099000090122).of(0.001306609900009012)
   end
 
-  it 'cell as38 should equal "Lighting and appliances"' do
-    sheet3.as38.should == "Lighting and appliances"
+  it 'cell cb39 should equal 0.0023224394939339466' do
+    sheet3.cb39.should be_within(0.00023224394939339466).of(0.0023224394939339466)
   end
 
-  it 'cell aw38 should equal 3.14118424566174' do
-    sheet3.aw38.should be_close(3.14118424566174,0.314118424566174)
+  it 'cell cc39 should equal 0.004923200107829309' do
+    sheet3.cc39.should be_within(0.000492320010782931).of(0.004923200107829309)
   end
 
-  it 'cell ax38 should equal 3.1571959446395' do
-    sheet3.ax38.should be_close(3.1571959446395,0.31571959446395)
+  it 'cell cd39 should equal 0.008531734435290513' do
+    sheet3.cd39.should be_within(0.0008531734435290513).of(0.008531734435290513)
   end
 
-  it 'cell ay38 should equal 0.00416523666236821' do
-    sheet3.ay38.should be_close(0.00416523666236821,0.000416523666236821)
+  it 'cell ca40 should equal 0.8066937854641579' do
+    sheet3.ca40.should be_within(0.0806693785464158).of(0.8066937854641579)
   end
 
-  it 'cell d39 should equal "Industrial processes"' do
-    sheet3.d39.should == "Industrial processes"
+  it 'cell cb40 should equal 0.8148305618395235' do
+    sheet3.cb40.should be_within(0.08148305618395235).of(0.8148305618395235)
   end
 
-  it 'cell as39 should equal "Industry"' do
-    sheet3.as39.should == "Industry"
+  it 'cell cc40 should equal 0.7999131676799968' do
+    sheet3.cc40.should be_within(0.07999131676799968).of(0.7999131676799968)
   end
 
-  it 'cell aw39 should equal 93.4148429135477' do
-    sheet3.aw39.should be_close(93.4148429135477,9.34148429135477)
+  it 'cell cd40 should equal 0.7730373314014172' do
+    sheet3.cd40.should be_within(0.07730373314014172).of(0.7730373314014172)
   end
 
-  it 'cell ax39 should equal 96.9722349046051' do
-    sheet3.ax39.should be_close(96.9722349046051,9.69722349046051)
+  it 'cell e41 should equal "Industrial processes"' do
+    sheet3.e41.should == "Industrial processes"
   end
 
-  it 'cell ay39 should equal 0.127933873962505' do
-    sheet3.ay39.should be_close(0.127933873962505,0.0127933873962505)
+  it 'cell bk41 should equal "Transport"' do
+    sheet3.bk41.should == "Transport"
   end
 
-  it 'cell d40 should equal "Domestic passenger transport"' do
-    sheet3.d40.should == "Domestic passenger transport"
+  it 'cell bo41 should equal 183.61905836674865' do
+    sheet3.bo41.should be_within(18.361905836674865).of(183.61905836674865)
   end
 
-  it 'cell as40 should equal "Transport"' do
-    sheet3.as40.should == "Transport"
+  it 'cell bp41 should equal 178.80972372942105' do
+    sheet3.bp41.should be_within(17.880972372942107).of(178.80972372942105)
   end
 
-  it 'cell aw40 should equal 180.424334107361' do
-    sheet3.aw40.should be_close(180.424334107361,18.0424334107361)
+  it 'cell bq41 should equal 0.23188287058500776' do
+    sheet3.bq41.should be_within(0.023188287058500776).of(0.23188287058500776)
   end
 
-  it 'cell ax40 should equal 178.531342736455' do
-    sheet3.ax40.should be_close(178.531342736455,17.8531342736455)
+  it 'cell ca41 should equal 0.09137321430337475' do
+    sheet3.ca41.should be_within(0.009137321430337476).of(0.09137321430337475)
   end
 
-  it 'cell ay40 should equal 0.235533462980111' do
-    sheet3.ay40.should be_close(0.235533462980111,0.0235533462980111)
+  it 'cell cb41 should equal 0.10809790755506546' do
+    sheet3.cb41.should be_within(0.010809790755506546).of(0.10809790755506546)
   end
 
-  it 'cell as41 should equal "Fossil fuel production"' do
-    sheet3.as41.should == "Fossil fuel production"
+  it 'cell cc41 should equal 0.13278178694389065' do
+    sheet3.cc41.should be_within(0.013278178694389065).of(0.13278178694389065)
   end
 
-  it 'cell aw41 should equal 34.3992074383484' do
-    sheet3.aw41.should be_close(34.3992074383484,3.43992074383484)
+  it 'cell cd41 should equal 0.17476881664913543' do
+    sheet3.cd41.should be_within(0.017476881664913544).of(0.17476881664913543)
   end
 
-  it 'cell ax41 should equal 15.743695593306' do
-    sheet3.ax41.should be_close(15.743695593306,1.5743695593306)
+  it 'cell bk42 should equal "Fossil fuel production"' do
+    sheet3.bk42.should == "Fossil fuel production"
   end
 
-  it 'cell ay41 should equal 0.0207703985550034' do
-    sheet3.ay41.should be_close(0.0207703985550034,0.00207703985550034)
+  it 'cell bo42 should equal 34.39920743834843' do
+    sheet3.bo42.should be_within(3.439920743834843).of(34.39920743834843)
   end
 
-  it 'cell as42 should equal "Transfers"' do
-    sheet3.as42.should == "Transfers"
+  it 'cell bp42 should equal 15.743695593306029' do
+    sheet3.bp42.should be_within(1.574369559330603).of(15.743695593306029)
   end
 
-  it 'cell aw42 should equal 4.37065136408846' do
-    sheet3.aw42.should be_close(4.37065136408846,0.437065136408846)
+  it 'cell bq42 should equal 0.020416637594701793' do
+    sheet3.bq42.should be_within(0.0020416637594701794).of(0.020416637594701793)
   end
 
-  it 'cell ax42 should equal 7.70488041284379' do
-    sheet3.ax42.should be_close(7.70488041284379,0.770488041284379)
+  it 'cell ca42 should equal 0.06298795293818338' do
+    sheet3.ca42.should be_within(0.006298795293818338).of(0.06298795293818338)
   end
 
-  it 'cell ay42 should equal 0.010164921955265' do
-    sheet3.ay42.should be_close(0.010164921955265,0.0010164921955265)
+  it 'cell cb42 should equal 0.05492873166674448' do
+    sheet3.cb42.should be_within(0.005492873166674448).of(0.05492873166674448)
   end
 
-  it 'cell bd42 should equal "Balancing capacity used"' do
-    sheet3.bd42.should == "Balancing capacity used"
+  it 'cell cc42 should equal 0.05300514880790143' do
+    sheet3.cc42.should be_within(0.005300514880790143).of(0.05300514880790143)
   end
 
-  it 'cell bh42 should equal "%"' do
-    sheet3.bh42.should == "%"
+  it 'cell cd42 should equal 0.045226076543114974' do
+    sheet3.cd42.should be_within(0.004522607654311498).of(0.045226076543114974)
   end
 
-  it 'cell bi42 should equal 0.371557661286577' do
-    sheet3.bi42.should be_close(0.371557661286577,0.0371557661286577)
+  it 'cell bk43 should equal "Transfers"' do
+    sheet3.bk43.should == "Transfers"
   end
 
-  it 'cell bj42 should equal 0.627071889182681' do
-    sheet3.bj42.should be_close(0.627071889182681,0.0627071889182681)
+  it 'cell bo43 should equal 4.370651364088464' do
+    sheet3.bo43.should be_within(0.4370651364088464).of(4.370651364088464)
   end
 
-  it 'cell bk42 should equal 0.585205497503376' do
-    sheet3.bk42.should be_close(0.585205497503376,0.0585205497503376)
+  it 'cell bp43 should equal 9.431749179654988' do
+    sheet3.bp43.should be_within(0.9431749179654988).of(9.431749179654988)
   end
 
-  it 'cell bl42 should equal 0.305298358988286' do
-    sheet3.bl42.should be_close(0.305298358988286,0.0305298358988286)
+  it 'cell bq43 should equal 0.01223122002987769' do
+    sheet3.bq43.should be_within(0.001223122002987769).of(0.01223122002987769)
   end
 
-  it 'cell d43 should equal "Domestic freight"' do
-    sheet3.d43.should == "Domestic freight"
+  it 'cell e44 should equal "Commercial heating and cooling"' do
+    sheet3.e44.should == "Commercial heating and cooling"
   end
 
-  it 'cell aw43 should equal 645.531629426918' do
-    sheet3.aw43.should be_close(645.531629426918,64.5531629426918)
+  it 'cell bo44 should equal 656.7168154337664' do
+    sheet3.bo44.should be_within(65.67168154337665).of(656.7168154337664)
   end
 
-  it 'cell ax43 should equal 634.506938594306' do
-    sheet3.ax43.should be_close(634.506938594306,63.4506938594306)
+  it 'cell bp44 should equal 760.3263143481513' do
+    sheet3.bp44.should be_within(76.03263143481513).of(760.3263143481513)
   end
 
-  it 'cell ay43 should equal 0.837094564132853' do
-    sheet3.ay43.should be_close(0.837094564132853,0.0837094564132853)
+  it 'cell bq44 should equal 0.9860014582828815' do
+    sheet3.bq44.should be_within(0.09860014582828816).of(0.9860014582828815)
   end
 
-  it 'cell bd43 should equal "Extra standby capacity required"' do
-    sheet3.bd43.should == "Extra standby capacity required"
+  it 'cell ca44 should equal 489.16767952103856' do
+    sheet3.ca44.should be_within(48.91676795210386).of(489.16767952103856)
   end
 
-  it 'cell bh43 should equal "GWcapacity"' do
-    sheet3.bh43.should == "GWcapacity"
+  it 'cell cb44 should equal 367.56178876356023' do
+    sheet3.cb44.should be_within(36.756178876356024).of(367.56178876356023)
   end
 
-  it 'cell bi43 should equal 0.0' do
-    sheet3.bi43.should be_close(0.0,1.0e-08)
+  it 'cell cc44 should equal 134.45645184166892' do
+    sheet3.cc44.should be_within(13.445645184166892).of(134.45645184166892)
   end
 
-  it 'cell bj43 should equal 0.0' do
-    sheet3.bj43.should be_close(0.0,1.0e-08)
+  it 'cell cd44 should equal 142.15429299181775' do
+    sheet3.cd44.should be_within(14.215429299181777).of(142.15429299181775)
   end
 
-  it 'cell bk43 should equal 0.0' do
-    sheet3.bk43.should be_close(0.0,1.0e-08)
+  it 'cell bo45 should equal 0.9695383707592329' do
+    sheet3.bo45.should be_within(0.0969538370759233).of(0.9695383707592329)
   end
 
-  it 'cell bl43 should equal 0.0' do
-    sheet3.bl43.should be_close(0.0,1.0e-08)
+  it 'cell ca45 should equal 0.03288633826130892' do
+    sheet3.ca45.should be_within(0.003288633826130892).of(0.03288633826130892)
   end
 
-  it 'cell d44 should equal "International aviation"' do
-    sheet3.d44.should == "International aviation"
+  it 'cell cb45 should equal 0.09131531549235676' do
+    sheet3.cb45.should be_within(0.009131531549235676).of(0.09131531549235676)
   end
 
-  it 'cell aw44 should equal 0.953025215068897' do
-    sheet3.aw44.should be_close(0.953025215068897,0.0953025215068897)
+  it 'cell cc45 should equal 0.32437634210754784' do
+    sheet3.cc45.should be_within(0.03243763421075479).of(0.32437634210754784)
   end
 
-  it 'cell bd44 should equal "Probable annual emissions"' do
-    sheet3.bd44.should == "Probable annual emissions"
+  it 'cell cd45 should equal 0.4057249907385234' do
+    sheet3.cd45.should be_within(0.040572499073852346).of(0.4057249907385234)
   end
 
-  it 'cell bh44 should equal "MtCO2e"' do
-    sheet3.bh44.should == "MtCO2e"
+  it 'cell ca46 should equal 0.0' do
+    sheet3.ca46.should be_within(1.0e-08).of(0.0)
   end
 
-  it 'cell bi44 should equal 0.0' do
-    sheet3.bi44.should be_close(0.0,1.0e-08)
+  it 'cell cb46 should equal 0.05631026029562064' do
+    sheet3.cb46.should be_within(0.0056310260295620645).of(0.05631026029562064)
   end
 
-  it 'cell bj44 should equal 0.0' do
-    sheet3.bj44.should be_close(0.0,1.0e-08)
+  it 'cell cc46 should equal 0.1473841905517813' do
+    sheet3.cc46.should be_within(0.014738419055178132).of(0.1473841905517813)
   end
 
-  it 'cell bk44 should equal 0.0' do
-    sheet3.bk44.should be_close(0.0,1.0e-08)
+  it 'cell cd46 should equal 0.1310389549830352' do
+    sheet3.cd46.should be_within(0.01310389549830352).of(0.1310389549830352)
   end
 
-  it 'cell bl44 should equal 0.0' do
-    sheet3.bl44.should be_close(0.0,1.0e-08)
+  it 'cell ca47 should equal 0.8575348775012931' do
+    sheet3.ca47.should be_within(0.08575348775012931).of(0.8575348775012931)
   end
 
-  it 'cell d45 should equal "International shipping (maritime bunkers)"' do
-    sheet3.d45.should == "International shipping (maritime bunkers)"
+  it 'cell cb47 should equal 0.7450205172881899' do
+    sheet3.cb47.should be_within(0.07450205172881899).of(0.7450205172881899)
   end
 
-  it 'cell d46 should equal "Geosequestration"' do
-    sheet3.d46.should == "Geosequestration"
+  it 'cell cc47 should equal 0.24644023805580673' do
+    sheet3.cc47.should be_within(0.024644023805580673).of(0.24644023805580673)
+  end
+
+  it 'cell cd47 should equal 0.09989793274000801' do
+    sheet3.cd47.should be_within(0.009989793274000801).of(0.09989793274000801)
+  end
+
+  it 'cell e48 should equal "Commercial lighting, appliances, and catering"' do
+    sheet3.e48.should == "Commercial lighting, appliances, and catering"
+  end
+
+  it 'cell ca48 should equal 0.11152263608971193' do
+    sheet3.ca48.should be_within(0.011152263608971194).of(0.11152263608971193)
+  end
+
+  it 'cell cb48 should equal 0.17213055916620532' do
+    sheet3.cb48.should be_within(0.01721305591662053).of(0.17213055916620532)
+  end
+
+  it 'cell cc48 should equal 0.5557308370552593' do
+    sheet3.cc48.should be_within(0.05557308370552593).of(0.5557308370552593)
+  end
+
+  it 'cell cd48 should equal 0.745911777297824' do
+    sheet3.cd48.should be_within(0.0745911777297824).of(0.745911777297824)
+  end
+
+  it 'cell ca49 should equal 0.02914502245162009' do
+    sheet3.ca49.should be_within(0.0029145022451620094).of(0.02914502245162009)
+  end
+
+  it 'cell cb49 should equal 0.02407058512469889' do
+    sheet3.cb49.should be_within(0.002407058512469889).of(0.02407058512469889)
+  end
+
+  it 'cell cc49 should equal 0.043617265917883806' do
+    sheet3.cc49.should be_within(0.004361726591788381).of(0.043617265917883806)
+  end
+
+  it 'cell cd49 should equal 0.016538058602136085' do
+    sheet3.cd49.should be_within(0.0016538058602136086).of(0.016538058602136085)
+  end
+
+  it 'cell e52 should equal "Geosequestration"' do
+    sheet3.e52.should == "Geosequestration"
+  end
+
+  it 'cell e53 should equal "Storage, demand shifting, interconnection"' do
+    sheet3.e53.should == "Storage, demand shifting, interconnection"
   end
 
 end

@@ -1,0 +1,10 @@
+%p.security_label
+  - if @pathway.gw_backup_needed > 0
+    If there are five cold, almost windless, winter days in 2050, then up to #{@pathway.gw_backup_needed.round} GW of backup generation capacity will be required to ensure that electricity is always available.
+  - else
+    No backup generation would be required in 2050, even if there were five cold, almost windless, winter days.
+  %span{:title => 'More information about the energy security test.', :class => 'one_page_link'}= link_to 'i','/onepage/49.pdf', :target => '_blank'
+  
+%p.security_label 
+  In 2050, #{(@pathway.percent_energy_imported*100).round}% of primary energy will be imported.
+
