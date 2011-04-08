@@ -4,6 +4,11 @@ module ApplicationHelper
   def other_meta_data
   end
   
+  def url_for_this_view_of_pathway(code)
+    return url_for(:id => code) unless @pathways
+    url_for(:id => @choice,:pathway_id => code)
+  end
+  
   def chart_js
     ""
   end

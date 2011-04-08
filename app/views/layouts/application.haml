@@ -24,10 +24,10 @@
             %ul 
               - @pathway.saved_pathways[0...3].each do |saved_pathway|
                 - next if saved_pathway.first == 0.0
-                %li.failed= link_to(saved_pathway.first,url_for(:id => saved_pathway.last))
+                %li.failed= link_to(saved_pathway.first,url_for_this_view_of_pathway(saved_pathway.last))
               - @pathway.saved_pathways[3..-1].each do |saved_pathway|
                 - next if saved_pathway.first == 0.0
-                %li= link_to(saved_pathway.first,url_for(:id => saved_pathway.last))
+                %li= link_to(saved_pathway.first,url_for_this_view_of_pathway(saved_pathway.last))
               = render '/layouts/debate_pathways'
               
         #help
